@@ -562,7 +562,7 @@ function doPost(e) {
                             </h4>
                             <p class="text-xs text-slate-600">นำ URL ที่ได้จากการ Deploy ใน Google Sheets มาวางเปิดใช้งานที่นี่:</p>
                             <div class="flex items-center gap-2">
-                                <input type="text" id="webAppUrlInput" value="https://script.google.com/macros/s/AKfycbymLyg_vYzqQgc5MjZ_nnP-XdA534KwHXU-YduuNmq4DfgjHYbF7ZrKENJeKp3xMTnZ3g/exec" class="w-full text-xs bg-white border border-slate-300 rounded-xl px-3 py-2 font-mono text-slate-700 select-all focus:ring-2 focus:ring-blue-500">
+                                <input type="text" id="webAppUrlInput" value="https://script.google.com/macros/s/AKfycbwghOZUj2ATVANO-A9lSW1mQ8CCfBwsJ36Ls4Mp_kCMK8x322o8X8ec7wqWMoJRLPiKXQ/exec" class="w-full text-xs bg-white border border-slate-300 rounded-xl px-3 py-2 font-mono text-slate-700 select-all focus:ring-2 focus:ring-blue-500">
                                 <button onclick="saveWebAppUrl()" class="px-4 py-2 bg-blue-600 text-white rounded-xl text-xs font-bold hover:bg-blue-700 shrink-0 shadow-sm">
                                     บันทึก URL
                                 </button>
@@ -733,7 +733,7 @@ function doPost(e) {
         // Application State
         let currentActiveTab = 'formTab';
         let recordsDatabase = JSON.parse(localStorage.getItem('huairat_cdd_reports')) || {};
-        let webAppUrl = "https://script.google.com/macros/s/AKfycbymLyg_vYzqQgc5MjZ_nnP-XdA534KwHXU-YduuNmq4DfgjHYbF7ZrKENJeKp3xMTnZ3g/exec";
+        let webAppUrl = "https://script.google.com/macros/s/AKfycbwghOZUj2ATVANO-A9lSW1mQ8CCfBwsJ36Ls4Mp_kCMK8x322o8X8ec7wqWMoJRLPiKXQ/exec";
         let activePersonsCount = 4; // Default 4 volunteers (can expand to 5 or 6)
 
         // Initialize application on load
