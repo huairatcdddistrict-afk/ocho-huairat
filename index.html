@@ -474,35 +474,110 @@
                             <i class="fa-solid fa-link"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-slate-800 font-prompt">การเชื่อมต่อ Google Sheets & ข้อมูลระบบ</h3>
-                            <p class="text-xs text-slate-500">ตั้งค่า Web App URL และลิงก์ฐานข้อมูลออนไลน์ของสำนักงานพัฒนาชุมชนอำเภอห้วยราช</p>
+                            <h3 class="text-lg font-bold text-slate-800 font-prompt">วิธีแก้ปัญหา & การเชื่อมต่อ Google Sheets</h3>
+                            <p class="text-xs text-slate-500">ขั้นตอนการนำโค้ด Apps Script ไปติดตั้งใน Google Sheets เพื่อรับข้อมูลเข้าตารางโดยอัตโนมัติ</p>
                         </div>
+                    </div>
+
+                    <!-- Step by Step Setup Guide -->
+                    <div class="bg-amber-50 rounded-2xl p-5 border border-amber-200 space-y-3">
+                        <h4 class="font-bold text-amber-900 text-sm flex items-center gap-2 font-prompt">
+                            <i class="fa-solid fa-list-check text-amber-600"></i> ขั้นตอนการติดตั้ง Google Apps Script ใน Google Sheets (ทำครั้งเดียว):
+                        </h4>
+                        <ol class="list-decimal list-inside space-y-2 text-xs text-amber-950 font-medium">
+                            <li>เปิดไฟล์ Google Sheets ของคุณ: <a href="https://docs.google.com/spreadsheets/d/1ZccSUSW3P8DrPw7k14FCWFYYH6baINu85lHlqwH9Ljg/edit?usp=sharing" target="_blank" class="text-blue-700 underline font-bold">คลิกที่นี่เพื่อเปิดสเปรดชีต</a></li>
+                            <li>ไปที่เมนูด้านบนเลือก <strong>ส่วนขยาย (Extensions)</strong> &gt; <strong>Apps Script</strong></li>
+                            <li>ลบโค้ดเดิมทั้งหมดในไฟล์ <code class="bg-amber-100 px-1 py-0.5 rounded font-mono">Code.gs</code> ออก แล้ววาง **โค้ดสคริปต์รับข้อมูล** ด้านล่างนี้ลงไป</li>
+                            <li>กดปุ่ม **บันทึก (Save)** รูปแผ่นดิสก์</li>
+                            <li>กดปุ่ม **ทำให้ใช้งานได้อย่างรวดเร็ว (Deploy)** มุมขวาบน &gt; เลือก **การทำให้ใช้งานได้ใหม่ (New deployment)**</li>
+                            <li>ในช่อง <code class="bg-amber-100 px-1 py-0.5 rounded font-mono">ผู้ที่มีสิทธิ์เข้าถึง (Who has access)</code> ให้เปลี่ยนเป็น **"ทุกคน (Anyone)"** <span class="text-rose-600 font-bold">(สำคัญมาก!)</span></li>
+                            <li>กด **ทำให้ใช้งานได้ (Deploy)** แล้วคัดลอก **URL ของเว็บแอป (Web App URL)** นำมาวางในช่องด้านล่าง</li>
+                        </ol>
+                    </div>
+
+                    <!-- Apps Script Code Box -->
+                    <div class="bg-slate-900 text-slate-100 rounded-2xl p-5 border border-slate-800 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold font-mono text-blue-400 flex items-center gap-2">
+                                <i class="fa-solid fa-code"></i> โค้ดสำหรับวางใน Apps Script (Code.gs)
+                            </span>
+                            <button onclick="copyAppsScriptCode()" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-copy"></i> คัดลอกโค้ดสคริปต์
+                            </button>
+                        </div>
+                        <pre id="appsScriptCodeBlock" class="text-[11px] font-mono leading-relaxed bg-slate-950 p-4 rounded-xl overflow-x-auto text-emerald-400 select-all border border-slate-800">
+function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = JSON.parse(e.postData.contents);
+    
+    // หากยังไม่มีหัวตาราง ให้สร้างหัวตารางอัตโนมัติ
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow([
+        "วันที่บันทึก", "ตำบล", "หมู่บ้าน", 
+        "อช.1 ชื่อ-สกุล", "เลขบัตรประชาชน", "บ้านเลขที่", "อาชีพ", "เบอร์โทร",
+        "อช.2 ชื่อ-สกุล", "เลขบัตรประชาชน", "บ้านเลขที่", "อาชีพ", "เบอร์โทร",
+        "อช.3 ชื่อ-สกุล", "เลขบัตรประชาชน", "บ้านเลขที่", "อาชีพ", "เบอร์โทร",
+        "อช.4 ชื่อ-สกุล", "เลขบัตรประชาชน", "บ้านเลขที่", "อาชีพ", "เบอร์โทร",
+        "อช.5 ชื่อ-สกุล", "เลขบัตรประชาชน", "บ้านเลขที่", "อาชีพ", "เบอร์โทร",
+        "อช.6 ชื่อ-สกุล", "เลขบัตรประชาชน", "บ้านเลขที่", "อาชีพ", "เบอร์โทร"
+      ]);
+      sheet.getRange(1, 1, 1, 33).setFontWeight("bold").setBackground("#d9e1f2");
+    }
+
+    var row = [data.updatedAt, data.tambon, data.village];
+    
+    // ใส่ข้อมูล อช. แต่ละคน (พร้อมฝังเครื่องหมาย ' เพื่อไม่ให้เลข 0 และเลข 13 หลักสูญหาย)
+    for (var i = 0; i < 6; i++) {
+      if (data.volunteers && data.volunteers[i]) {
+        var v = data.volunteers[i];
+        row.push(
+          v.name || "", 
+          "'" + (v.idcard || ""), 
+          v.house_no || "", 
+          v.occupation || "", 
+          "'" + (v.phone || "")
+        );
+      } else {
+        row.push("", "", "", "", "");
+      }
+    }
+    
+    sheet.appendRow(row);
+    
+    return ContentService.createTextOutput(JSON.stringify({"status": "success"}))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({"status": "error", "message": err.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}</pre>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Card 1: Web App URL Configuration -->
                         <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-3">
-                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">
-                                <i class="fa-solid fa-code text-blue-600"></i> Google Apps Script Web App URL
+                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2 font-prompt">
+                                <i class="fa-solid fa-gears text-blue-600"></i> Google Apps Script Web App URL
                             </h4>
-                            <p class="text-xs text-slate-600">ลิงก์ Endpoint ที่ใช้สำหรับบันทึกข้อมูลแบบเรียลไทม์ไปยัง Google Sheets อัตโนมัติ:</p>
+                            <p class="text-xs text-slate-600">นำ URL ที่ได้จากการ Deploy ใน Google Sheets มาวางเปิดใช้งานที่นี่:</p>
                             <div class="flex items-center gap-2">
-                                <input type="text" id="webAppUrlInput" value="https://script.google.com/macros/s/AKfycbwW9oi2AcjgR3VjfDwqI4rOc4XkiCyONTSg4MlSxv2bRt2qPPjTcAC6A-_5KLsnH5viJw/exec" class="w-full text-xs bg-white border border-slate-300 rounded-xl px-3 py-2 font-mono text-slate-700 select-all">
-                                <button onclick="saveWebAppUrl()" class="px-4 py-2 bg-blue-600 text-white rounded-xl text-xs font-bold hover:bg-blue-700 shrink-0">
-                                    บันทึก
+                                <input type="text" id="webAppUrlInput" value="https://script.google.com/macros/s/AKfycbwW9oi2AcjgR3VjfDwqI4rOc4XkiCyONTSg4MlSxv2bRt2qPPjTcAC6A-_5KLsnH5viJw/exec" class="w-full text-xs bg-white border border-slate-300 rounded-xl px-3 py-2 font-mono text-slate-700 select-all focus:ring-2 focus:ring-blue-500">
+                                <button onclick="saveWebAppUrl()" class="px-4 py-2 bg-blue-600 text-white rounded-xl text-xs font-bold hover:bg-blue-700 shrink-0 shadow-sm">
+                                    บันทึก URL
                                 </button>
                             </div>
                             <div class="text-[11px] text-emerald-600 font-semibold flex items-center gap-1">
-                                <i class="fa-solid fa-circle-check"></i> สถานะ: เปิดใช้งานการบันทึกอัตโนมัติแล้ว
+                                <i class="fa-solid fa-circle-check"></i> พร้อมเชื่อมต่อและบันทึกอัตโนมัติ
                             </div>
                         </div>
 
                         <!-- Card 2: Google Sheets Direct Link -->
                         <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-3">
-                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2 font-prompt">
                                 <i class="fa-solid fa-table text-emerald-600"></i> เปิดดู Google Sheets Spreadsheet
                             </h4>
-                            <p class="text-xs text-slate-600">คลิกปุ่มด้านล่างเพื่อเปิดไฟล์ Google Sheets ที่รวบรวมข้อมูลแบบรายงานทั้งหมดของอำเภอห้วยราช:</p>
+                            <p class="text-xs text-slate-600">คลิกเปิดไฟล์เพื่อตรวจสอบข้อมูลที่ถูกส่งเข้ามาแบบเรียลไทม์:</p>
                             <div>
                                 <a href="https://docs.google.com/spreadsheets/d/1ZccSUSW3P8DrPw7k14FCWFYYH6baINu85lHlqwH9Ljg/edit?usp=sharing" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all">
                                     <i class="fa-solid fa-file-excel text-sm"></i>
@@ -510,19 +585,9 @@
                                     <i class="fa-solid fa-external-link-alt text-[10px] ml-1"></i>
                                 </a>
                             </div>
-                            <div class="text-[11px] text-slate-500">
-                                หมายเหตุ: เลขประจำตัวประชาชน (13 หลัก) มีการเชื่อมโยงกับ Google Sheets โดยผู้มีสิทธิ์สามารถตรวจสอบรายละเอียดได้
-                            </div>
                         </div>
                     </div>
 
-                    <!-- Privacy Policy Notice -->
-                    <div class="p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 space-y-1">
-                        <div class="font-bold flex items-center gap-1.5">
-                            <i class="fa-solid fa-shield-halved text-amber-600"></i> นโยบายความเป็นส่วนตัวและความปลอดภัยของข้อมูล
-                        </div>
-                        <p>เพื่อปฏิบัติตามกฎหมายคุ้มครองข้อมูลส่วนบุคคล (PDPA) ระบบได้ทำการซ่อนเลขบัตรประจำตัวประชาชนและเบอร์โทรศัพท์ในเมนูแสดงผลสาธารณะ (สถานะเป้าหมาย, ตารางสรุป และตัวอย่างพิมพ์เอกสาร A4) โดยจะแสดงเฉพาะในเมนูกรอกแบบรายงานและฐานข้อมูล Google Sheets ภายในของเจ้าหน้าที่เท่านั้น</p>
-                    </div>
                 </div>
             </div>
 
@@ -922,12 +987,12 @@
             submitBtnText.innerText = "กำลังส่งไปยัง Google Sheets...";
 
             try {
-                // POST request to Web App URL (using no-cors mode for Google Apps Script Web App compatibility)
+                // Post as text/plain to bypass CORS preflight restrictions in Apps Script
                 await fetch(webAppUrl, {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'text/plain;charset=utf-8'
                     },
                     body: JSON.stringify(reportData)
                 });
@@ -938,11 +1003,22 @@
                 submitBtnText.innerText = "บันทึกรายงาน";
             }
 
-            showCustomMessage("บันทึกรายงานผลการคัดเลือก อช. และซิงค์ข้อมูลสำเร็จ", "บันทึกสำเร็จ", "emerald", "fa-check");
+            showCustomMessage("บันทึกรายงานผลการคัดเลือก อช. และส่งข้อมูลไปยัง Google Sheets เรียบร้อยแล้ว", "บันทึกสำเร็จ", "emerald", "fa-check");
             updateDashboard();
             renderRecordsTable();
             populatePrintVillageDropdown();
-            handleVillageChange(); // Refresh status notice
+            handleVillageChange(); 
+        }
+
+        function copyAppsScriptCode() {
+            const codeText = document.getElementById('appsScriptCodeBlock').innerText;
+            const textarea = document.createElement('textarea');
+            textarea.value = codeText;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showCustomMessage("คัดลอกโค้ด Apps Script เรียบร้อยแล้ว สามารถนำไปวางใน Google Sheets ได้เลยครับ", "คัดลอกสำเร็จ", "emerald", "fa-copy");
         }
 
         function loadVillageDataToForm(tambon, village) {
