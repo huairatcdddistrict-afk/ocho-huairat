@@ -100,7 +100,7 @@
                                 แบบรายงานผลการคัดเลือกอาสาพัฒนาชุมชน (อช.)
                             </h1>
                             <p class="text-blue-100 text-xs sm:text-sm mt-0.5 font-light">
-                                ระบบบันทึกและรวบรวมข้อมูล อช. (เป้าหมายหมู่บ้านละ 4–6 คน)
+                                ระบบบันทึกและรวบรวมข้อมูล อช. ตามโครงสร้าง 8 ตำบลอย่างเป็นทางการ
                             </p>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
                     <button onclick="switchTab('dashboardTab')" id="btn-dashboardTab" class="tab-btn px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-xl flex items-center gap-2 whitespace-nowrap transition-all text-slate-600 hover:text-blue-700 hover:bg-blue-50">
                         <i class="fa-solid fa-chart-pie"></i>
                         <span>สถานะเป้าหมายหมู่บ้าน</span>
-                        <span id="completedBadge" class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-0.5 rounded-full ml-1">0/80</span>
+                        <span id="completedBadge" class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-0.5 rounded-full ml-1">0/81</span>
                     </button>
                     <button onclick="switchTab('listTab')" id="btn-listTab" class="tab-btn px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-xl flex items-center gap-2 whitespace-nowrap transition-all text-slate-600 hover:text-blue-700 hover:bg-blue-50">
                         <i class="fa-solid fa-table-list"></i>
@@ -170,7 +170,7 @@
                             </div>
                             <div>
                                 <h2 class="text-base sm:text-lg font-bold text-slate-800 font-prompt">ข้อมูลสถานที่ (เลือกตำบล และ หมู่บ้าน)</h2>
-                                <p class="text-xs text-slate-500">เลือกตำบลเพื่อแสดงรายชื่อหมู่บ้านที่ถูกต้องตามประกาศอำเภอห้วยราช</p>
+                                <p class="text-xs text-slate-500">เลือกตำบลเพื่อแสดงรายชื่อหมู่บ้านที่ถูกต้องตามโครงสร้างทางการของอำเภอห้วยราช</p>
                             </div>
                         </div>
 
@@ -217,7 +217,7 @@
                                 </div>
                                 <div>
                                     <h2 class="text-base sm:text-lg font-bold text-slate-800 font-prompt">รายชื่ออาสาพัฒนาชุมชน (อช.)</h2>
-                                    <p class="text-xs text-slate-500">กรอกรายชื่อ 4 ถึง 6 คนต่อหมู่บ้าน (สัดส่วนชาย-หญิงใกล้เคียงกัน)</p>
+                                    <p class="text-xs text-slate-500">กรอกรายชื่อ 4 ถึง 6 คนต่อหมู่บ้าน พร้อมบ้านเลขที่ประกอบอาชีพและเบอร์โทรศัพท์ตามแบบฟอร์มทางการ</p>
                                 </div>
                             </div>
 
@@ -271,7 +271,7 @@
                             <button type="button" onclick="showResetConfirmationModal()" class="w-1/2 sm:w-auto px-5 py-2.5 text-xs sm:text-sm font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all flex items-center justify-center gap-1.5">
                                 <i class="fa-solid fa-rotate-left"></i> ล้างข้อมูล
                             </button>
-                            <button type="submit" class="w-1/2 sm:w-auto px-7 py-2.5 text-xs sm:text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 rounded-xl shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center gap-2">
+                            <button type="submit" id="submitBtn" class="w-1/2 sm:w-auto px-7 py-2.5 text-xs sm:text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 rounded-xl shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center gap-2">
                                 <i class="fa-solid fa-floppy-disk"></i>
                                 <span>บันทึกรายงาน</span>
                             </button>
@@ -281,7 +281,7 @@
                 </form>
             </div>
 
-            <!-- TAB 2: DASHBOARD & ALL 80 VILLAGES STATUS -->
+            <!-- TAB 2: DASHBOARD & ALL VILLAGES STATUS -->
             <div id="dashboardTab" class="tab-content hidden space-y-6">
                 <!-- Summary Stats Cards -->
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -291,7 +291,7 @@
                         </div>
                         <div>
                             <div class="text-xs font-semibold text-slate-500">หมู่บ้านเป้าหมาย</div>
-                            <div id="dashTotalVillagesBadge" class="text-2xl font-bold text-slate-900 font-prompt">80 <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span></div>
+                            <div id="dashTotalVillagesBadge" class="text-2xl font-bold text-slate-900 font-prompt">81 <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span></div>
                         </div>
                     </div>
 
@@ -311,7 +311,7 @@
                         </div>
                         <div>
                             <div class="text-xs font-semibold text-slate-500">คงเหลือที่ต้องรายงาน</div>
-                            <div id="dashPendingCount" class="text-2xl font-bold text-amber-600 font-prompt">80 <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span></div>
+                            <div id="dashPendingCount" class="text-2xl font-bold text-amber-600 font-prompt">81 <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span></div>
                         </div>
                     </div>
 
@@ -320,330 +320,210 @@
                             <i class="fa-solid fa-users"></i>
                         </div>
                         <div>
-                            <div class="text-xs font-semibold text-slate-500">จำนวน อช. ทั้งหมด</div>
+                            <div class="text-xs font-semibold text-slate-500">อช. รวมทั้งหมด</div>
                             <div id="dashTotalVolunteers" class="text-2xl font-bold text-indigo-600 font-prompt">0 <span class="text-xs font-normal text-slate-500">คน</span></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Progress Bar -->
-                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-2">
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs sm:text-sm font-bold text-slate-800">ความก้าวหน้าการส่งรายงานทั้ง 8 ตำบล (อำเภอห้วยราช)</span>
-                        <span id="dashProgressPercent" class="text-sm font-bold text-blue-600 font-prompt">0%</span>
+                <!-- Tambon Filter Bar -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-2 w-full sm:w-auto">
+                        <i class="fa-solid fa-filter text-blue-600"></i>
+                        <span class="text-sm font-bold text-slate-700">กรองตามตำบล:</span>
+                        <select id="dashTambonFilter" onchange="renderDashboard()" class="bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-blue-500">
+                            <option value="">-- ทุกตำบล (8 ตำบล) --</option>
+                        </select>
                     </div>
-                    <div class="w-full bg-slate-100 rounded-full h-3.5 overflow-hidden p-0.5 border border-slate-200">
-                        <div id="dashProgressBar" class="bg-gradient-to-r from-blue-600 to-indigo-600 h-2.5 rounded-full transition-all duration-500 shadow-sm" style="width: 0%"></div>
+                    <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+                        <span class="text-xs font-semibold text-slate-500">สถานะ:</span>
+                        <button onclick="setDashFilterStatus('all')" id="filterStatus-all" class="px-3 py-1.5 text-xs font-bold rounded-lg bg-blue-600 text-white transition-all">ทั้งหมด</button>
+                        <button onclick="setDashFilterStatus('reported')" id="filterStatus-reported" class="px-3 py-1.5 text-xs font-bold rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">รายงานแล้ว</button>
+                        <button onclick="setDashFilterStatus('pending')" id="filterStatus-pending" class="px-3 py-1.5 text-xs font-bold rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">ยังไม่รายงาน</button>
                     </div>
                 </div>
 
-                <!-- 8 Tambons Grid Status -->
-                <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-sm">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-100">
-                        <div>
-                            <h3 class="text-base sm:text-lg font-bold text-slate-800 font-prompt">สถานะการส่งรายงานแยกรายตำบล (8 ตำบล 80 หมู่บ้าน)</h3>
-                            <p class="text-xs text-slate-500">คลิกที่ชื่อหมู่บ้านเพื่อสลับไปกรอกหรือปรับปรุงรายงานของหมู่บ้านนั้นได้ทันที</p>
-                        </div>
-                        <div class="flex items-center gap-4 text-xs font-semibold">
-                            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span> รายงานแล้ว</span>
-                            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-slate-300 inline-block"></span> ยังไม่ได้รายงาน</span>
-                        </div>
+                <!-- Villages Grid -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+                        <h3 class="font-bold text-slate-800 text-base font-prompt">รายชื่อหมู่บ้านเป้าหมายทั้งหมดตามประกาศอำเภอห้วยราช</h3>
+                        <span class="text-xs text-slate-500">(คลิกที่หมู่บ้านเพื่อทำการกรอกหรือแก้ไขรายงาน)</span>
                     </div>
-
-                    <div id="tambonAccordionContainer" class="space-y-4">
+                    <div id="villagesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                         <!-- Rendered by JS -->
                     </div>
                 </div>
             </div>
 
-            <!-- TAB 3: LIST TABLE & EXPORT -->
+            <!-- TAB 3: LIST / SUMMARY TABLE & EXPORT -->
             <div id="listTab" class="tab-content hidden space-y-6">
-                <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-sm space-y-4">
-                    <!-- Table Toolbar -->
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4 mb-5">
                         <div>
-                            <h3 class="text-base sm:text-lg font-bold text-slate-800 font-prompt">รายการแบบรายงาน อช. ที่บันทึกแล้ว</h3>
-                            <p class="text-xs text-slate-500">จัดการข้อมูล ค้นหา และส่งออกไฟล์รายงานประจำอำเภอ</p>
+                            <h2 class="text-base sm:text-lg font-bold text-slate-800 font-prompt">ตารางสรุปข้อมูล อช. ที่รายงานแล้ว</h2>
+                            <p class="text-xs text-slate-500">ข้อมูลสรุปรายหมู่บ้าน พร้อมปุ่มจัดการแก้ไขหรือลบรายงาน <span class="text-amber-600 font-semibold">(ไม่แสดงเลขบัตรประชาชนและเบอร์โทรศัพท์เพื่อความเป็นส่วนตัวและความปลอดภัย)</span></p>
                         </div>
                         <div class="flex flex-wrap items-center gap-2">
-                            <button onclick="exportToExcel()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all flex items-center gap-2 shadow-sm">
-                                <i class="fa-solid fa-file-excel text-sm"></i>
-                                <span>ส่งออกเป็น Excel (.xlsx)</span>
+                            <button onclick="exportToExcel()" class="bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-semibold px-4 py-2 rounded-xl text-xs sm:text-sm flex items-center gap-2 shadow-sm transition-all">
+                                <i class="fa-solid fa-file-excel"></i>
+                                <span>Export Excel</span>
                             </button>
-                            <button onclick="exportToCSV()" class="px-3.5 py-2 bg-slate-700 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5">
-                                <i class="fa-solid fa-file-csv"></i>
-                                <span>ส่งออก CSV</span>
+                            <button onclick="switchTab('printTab')" class="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold px-4 py-2 rounded-xl text-xs sm:text-sm flex items-center gap-2 shadow-sm transition-all">
+                                <i class="fa-solid fa-print"></i>
+                                <span>พิมพ์รายงาน A4</span>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Search Filter -->
-                    <div class="flex flex-col sm:flex-row gap-3">
+                    <!-- Search and Filter inside List -->
+                    <div class="flex flex-col sm:flex-row gap-3 mb-5">
                         <div class="relative flex-1">
-                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-sm"></i>
-                            <input type="text" id="searchKeyword" onkeyup="filterTable()" placeholder="ค้นหาตามชื่อตำบล, หมู่บ้าน, หรือชื่อ-สกุล อช...." class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </span>
+                            <input type="text" id="searchInput" oninput="renderReportList()" placeholder="ค้นหาด้วยชื่อตำบล, หมู่บ้าน หรือชื่อ อช. ..." class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-blue-500">
                         </div>
-                        <select id="filterTambon" onchange="filterTable()" class="px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 font-medium">
-                            <option value="">-- แสดงทุกตำบล --</option>
+                        <select id="listTambonFilter" onchange="renderReportList()" class="bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-blue-500">
+                            <option value="">-- ทุกตำบล --</option>
                         </select>
                     </div>
 
                     <!-- Table Container -->
-                    <div class="overflow-x-auto border border-slate-200 rounded-xl shadow-inner">
-                        <table class="w-full text-left text-xs sm:text-sm text-slate-600">
-                            <thead class="bg-slate-100 text-slate-700 uppercase font-bold border-b border-slate-200">
-                                <tr>
-                                    <th class="px-4 py-3">ลำดับ</th>
-                                    <th class="px-4 py-3">ตำบล</th>
-                                    <th class="px-4 py-3">หมู่ที่ / ชื่อหมู่บ้าน</th>
-                                    <th class="px-4 py-3">จำนวน อช. (ช/ญ)</th>
-                                    <th class="px-4 py-3">วันที่บันทึกล่าสุด</th>
-                                    <th class="px-4 py-3 text-center">การจัดการ</th>
+                    <div class="overflow-x-auto rounded-xl border border-slate-200">
+                        <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                                    <th class="p-3 text-center w-12">ที่</th>
+                                    <th class="p-3">ตำบล / หมู่บ้าน</th>
+                                    <th class="p-3">รายชื่ออาสาพัฒนาชุมชน (อช.) พร้อมบ้านเลขที่/อาชีพ</th>
+                                    <th class="p-3 text-center">สัดส่วนเพศ</th>
+                                    <th class="p-3 text-center">วันที่บันทึก</th>
+                                    <th class="p-3 text-center w-28">จัดการ</th>
                                 </tr>
                             </thead>
-                            <tbody id="recordsTableBody" class="divide-y divide-slate-200 bg-white">
-                                <!-- Rendered dynamically -->
+                            <tbody id="reportTableBody" class="divide-y divide-slate-200">
+                                <!-- Rendered by JS -->
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
-            <!-- TAB 4: OFFICIAL PRINT PREVIEW (A4) -->
+            <!-- TAB 4: PRINT PREVIEW A4 -->
             <div id="printTab" class="tab-content hidden space-y-6">
-                <!-- Print Controls Top Bar -->
-                <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 no-print">
-                    <div class="flex items-center gap-3 w-full sm:w-auto">
-                        <label for="selectPrintVillage" class="text-xs font-bold text-slate-700 whitespace-nowrap">เลือกหมู่บ้านที่จะพิมพ์:</label>
-                        <select id="selectPrintVillage" onchange="renderPrintPreview()" class="w-full sm:w-auto bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-medium focus:ring-2 focus:ring-blue-500">
-                            <option value="">-- กรุณาเลือกหมู่บ้านที่มีข้อมูล --</option>
-                        </select>
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-6 no-print flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-base sm:text-lg font-bold text-slate-800 font-prompt">ตัวอย่างเอกสารทางการ (A4 Portrait)</h2>
+                        <p class="text-xs text-slate-500">เลือกตำบลเพื่อพิมพ์รายงานสรุปผลการคัดเลือก อช. ประจำตำบลส่งอำเภอ</p>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <button onclick="window.print()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center gap-2">
-                            <i class="fa-solid fa-print"></i> พิมพ์เอกสารรายงาน (A4)
+                    <div class="flex items-center gap-3">
+                        <select id="printTambonSelect" onchange="renderPrintPreview()" class="bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-sm font-medium text-slate-800">
+                            <!-- Filled by JS -->
+                        </select>
+                        <button onclick="window.print()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-5 py-2 rounded-xl text-sm flex items-center gap-2 shadow-md">
+                            <i class="fa-solid fa-print"></i>
+                            <span>พิมพ์เอกสาร</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- Official Document Container -->
-                <div id="printDocumentView" class="print-page bg-white p-8 sm:p-12 rounded-2xl border border-slate-300 shadow-md max-w-4xl mx-auto th-sarabun text-slate-900 leading-relaxed">
-                    
-                    <!-- Document Header with Logo -->
-                    <div class="text-center space-y-1.5 mb-6">
-                        <div class="flex justify-center mb-3">
-                            <img id="printLogoImg" src="https://cdip.cdd.go.th/wp-content/uploads/sites/112/2021/03/logo-cdd.png" 
-                                 alt="โลโก้ อช." 
-                                 onerror="this.onerror=null; this.src='https://placehold.co/80x80/1e3a8a/ffffff?text=อช.';"
-                                 class="h-20 w-auto object-contain">
+                <!-- A4 Official Paper View -->
+                <div class="max-w-[210mm] mx-auto bg-white p-8 sm:p-12 shadow-xl rounded-2xl print-page border border-slate-200 text-slate-900 th-sarabun text-base">
+                    <!-- Garuda Emblem / Header -->
+                    <div class="text-center mb-6">
+                        <div class="flex justify-center mb-2">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Emblem_of_Thailand_%28Garuda%29.svg" alt="ครุฑ" class="w-16 h-16 object-contain">
                         </div>
-                        <h2 class="text-2xl font-bold tracking-tight">แบบรายงานผลการคัดเลือกอาสาพัฒนาชุมชน (อช.)</h2>
-                        <h3 class="text-xl font-bold">รายชื่อผู้ที่ได้รับการคัดเลือกอาสาพัฒนาชุมชน (อช.)</h3>
-                        
-                        <div class="flex justify-center items-center gap-6 text-lg font-semibold pt-2">
-                            <span>ตำบล <span id="pTambon" class="border-b border-dotted border-slate-800 px-3 font-bold">........................</span></span>
-                            <span>อำเภอห้วยราช จังหวัดบุรีรัมย์</span>
-                        </div>
-                        <div class="flex justify-center items-center gap-6 text-lg font-semibold">
-                            <span>หมู่ที่ <span id="pMoo" class="border-b border-dotted border-slate-800 px-3 font-bold">........</span></span>
-                            <span>บ้าน <span id="pVillage" class="border-b border-dotted border-slate-800 px-4 font-bold">........................</span></span>
-                        </div>
+                        <h2 class="text-xl font-bold font-prompt">แบบรายงานผลการคัดเลือกอาสาพัฒนาชุมชน (อช.)</h2>
+                        <p class="text-lg font-bold font-prompt">สำนักงานพัฒนาชุมชนอำเภอห้วยราช จังหวัดบุรีรัมย์</p>
+                        <p id="printTambonTitle" class="text-md font-semibold text-slate-700 mt-1">ประจำตำบล..................................................</p>
                     </div>
 
-                    <!-- Volunteers Grid in Official Report Sheet -->
-                    <div id="pVolunteersList" class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-                        <!-- Dynamically filled with persons 1 to 6 -->
+                    <div class="mb-4 text-sm leading-relaxed">
+                        <p><strong>เรียน</strong> พัฒนาการอำเภอห้วยราช</p>
+                        <p class="indent-8 mt-1">ตามที่ กรมการพัฒนาชุมชน ได้กำหนดให้มีการคัดเลือกอาสาพัฒนาชุมชน (อช.) เพื่อปฏิบัติงานร่วมกับสำนักงานพัฒนาชุมชนอำเภอ โดยมีเป้าหมายการคัดเลือกในหมู่บ้านละ ๔ - ๖ คน นั้น</p>
+                        <p class="indent-8 mt-1">ในการนี้ <span id="printTambonSubtitle" class="font-semibold">ตำบล.......................</span> ได้ดำเนินการคัดเลือกอาสาพัฒนาชุมชน (อช.) ครบถ้วนทุกหมู่บ้านเรียบร้อยแล้ว จึงขอรายงานผลการคัดเลือกฯ ดังรายละเอียดปรากฏตามตารางแนบท้ายนี้</p>
                     </div>
 
-                    <!-- Official Notes Section -->
-                    <div class="mt-8 border-t border-slate-400 pt-4 text-sm leading-relaxed">
-                        <div class="font-bold text-base mb-1">หมายเหตุ:</div>
-                        <ol class="list-decimal list-inside space-y-1 pl-2">
-                            <li>ส่งเอกสารใบสมัครอาสาพัฒนาชุมชน (อช.) เฉพาะผู้ที่ได้รับคัดเลือกฯ</li>
-                            <li>ส่งแบบตรวจสอบคุณสมบัติของผู้ที่ได้รับคัดเลือกฯ</li>
-                        </ol>
+                    <!-- Print Table (No ID card for safety, with House No. & Occupation) -->
+                    <div class="my-6">
+                        <table class="w-full border-collapse border border-slate-800 text-sm">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-900 font-bold text-center">
+                                    <th class="border border-slate-800 p-2 w-12">ที่</th>
+                                    <th class="border border-slate-800 p-2 w-36">หมู่บ้าน / หมู่ที่</th>
+                                    <th class="border border-slate-800 p-2">รายชื่ออาสาพัฒนาชุมชน (อช.) (บ้านเลขที่ / อาชีพ / เบอร์โทร)</th>
+                                    <th class="border border-slate-800 p-2 w-24">เพศ</th>
+                                </tr>
+                            </thead>
+                            <tbody id="printTableBody">
+                                <!-- Filled by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Signature Section -->
+                    <div class="mt-12 flex justify-end">
+                        <div class="text-center w-72 space-y-2">
+                            <p>(ลงชื่อ)....................................................................</p>
+                            <p>(....................................................................)</p>
+                            <p>ตำแหน่ง เจ้าหน้าที่พัฒนาชุมชนผู้รับผิดชอบตำบล</p>
+                            <p>วันที่ ........ / ................ / ............</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- TAB 5: GOOGLE APPS SCRIPT GUIDE & SETTINGS -->
+            <!-- TAB 5: SYSTEM SETTINGS & GOOGLE SHEETS SETUP -->
             <div id="guideTab" class="tab-content hidden space-y-6">
-                <!-- Data Sync & Sharing Warning Card -->
-                <div class="bg-amber-50 border-2 border-amber-300 rounded-2xl p-5 sm:p-6 shadow-sm space-y-3">
-                    <div class="flex items-center gap-2.5 text-amber-950 font-bold text-base font-prompt">
-                        <i class="fa-solid fa-triangle-exclamation text-amber-600 text-xl"></i>
-                        <span>สาเหตุที่ส่งลิงก์ไปแล้วข้อมูลเป็น 0 และวิธีแก้ไข</span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-amber-900 leading-relaxed">
-                        เนื่องจากข้อมูลถูกบันทึกไว้ในเบราว์เซอร์ของเครื่องผู้กรอกแต่ละคน (Local Storage) หากคุณเปิดไฟล์ในคอมพิวเตอร์ของคุณเองแล้วส่งลิงก์ไฟล์ HTML ไป คนอื่นจะเปิดเจอข้อมูลในเครื่องของเขาซึ่งยังว่างเปล่า (เป็น 0) 
-                        <br><br>
-                        <strong>วิธีแก้ไขให้ทุกคนเห็นข้อมูลตรงกัน:</strong>
-                        <br>1. เชื่อมต่อ <strong>Google Sheets Web App URL</strong> ในช่องด้านล่าง (ข้อมูลจะบันทึกเข้า Google Sheets ส่วนกลางทันที)
-                        <br>2. อัปโหลดเว็บนี้ขึ้น <strong>GitHub Pages, Netlify หรือ Vercel</strong> แล้วนำลิงก์เว็บไซต์ออนไลน์นั้นไปแชร์ให้ผู้อื่นกรอก
-                    </p>
-                </div>
-
-                <!-- Custom Logo URL Setup -->
-                <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-sm space-y-3">
-                    <div class="flex items-center gap-2.5 text-slate-800 font-bold text-base font-prompt">
-                        <i class="fa-solid fa-image text-blue-600 text-lg"></i>
-                        <span>ตั้งค่าลิงก์โลโก้ อช. (ถ้ามีไฟล์บน GitHub หรือโฮสติ้งของคุณ)</span>
-                    </div>
-                    <p class="text-xs text-slate-500">
-                        คุณสามารถวาง Direct URL หรือ Raw Link รูปภาพโลโก้ของคุณจาก GitHub เพื่อนำมาแสดงในระบบและใบพิมพ์ A4
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-2">
-                        <input type="url" id="customLogoUrlInput" placeholder="https://raw.githubusercontent.com/username/repo/main/logo.png" class="flex-1 px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm font-mono focus:ring-2 focus:ring-blue-500">
-                        <button type="button" onclick="saveCustomLogoUrl()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-all shadow-sm shrink-0">
-                            บันทึกโลโก้
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Web App URL Input Card -->
-                <div class="bg-blue-50 border-2 border-blue-300 rounded-2xl p-5 sm:p-6 shadow-sm space-y-3">
-                    <div class="flex items-center gap-2.5 text-blue-950 font-bold text-base font-prompt">
-                        <i class="fa-solid fa-plug text-xl text-blue-600"></i>
-                        <span>กรอก Web App URL เพื่อเปิดใช้งานการบันทึกไปยัง Google Sheets</span>
-                    </div>
-                    <p class="text-xs text-blue-900">
-                        เมื่อคุณกด "การทำให้ใช้งานได้" (Deploy) ใน Google Apps Script แล้ว ให้นำ URL ที่ได้มาวางในช่องด้านล่างนี้ ระบบจะทำการส่งข้อมูลไปยัง Google Sheets โดยอัตโนมัติเมื่อมีการกดบันทึก
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-2 pt-1">
-                        <input type="url" id="googleScriptUrlInput" placeholder="https://script.google.com/macros/s/AKfycb.../exec" class="flex-1 px-4 py-2.5 bg-white border border-blue-300 rounded-xl text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 font-mono">
-                        <button type="button" onclick="saveScriptUrl()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 shrink-0">
-                            <i class="fa-solid fa-floppy-disk"></i>
-                            <span>บันทึกการเชื่อมต่อ</span>
-                        </button>
-                    </div>
-                    <div id="urlConnectionStatus" class="text-xs font-semibold text-slate-500 pt-1">
-                        <!-- Filled by JS -->
-                    </div>
-                </div>
-
-                <!-- Step-by-Step Guide -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-                    <div class="border-b border-slate-100 pb-4">
-                        <h3 class="text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2 font-prompt">
-                            <i class="fa-brands fa-google-drive text-emerald-600"></i>
-                            วิธีเชื่อมต่อแบบฟอร์มนี้เข้ากับ Google Sheets (โดยผู้กรอกไม่ต้อง Sign-in)
-                        </h3>
-                    </div>
-
-                    <div class="space-y-4 text-xs sm:text-sm text-slate-700">
-                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
-                            <span class="font-bold text-slate-900 block text-base font-prompt">ขั้นตอนที่ 1: สร้าง Google Sheets & เปิด Apps Script</span>
-                            <p>1. สร้าง Google Sheets ใหม่ใน Google Drive ของคุณ</p>
-                            <p>2. ไปที่เมนู <span class="font-semibold text-blue-800">ส่วนขยาย (Extensions)</span> &rarr; <span class="font-semibold text-blue-800">Apps Script</span></p>
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-6">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center text-xl font-bold shadow-sm">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
                         </div>
+                        <div>
+                            <h2 class="text-lg sm:text-xl font-bold text-slate-800 font-prompt">การเชื่อมต่อ Google Sheets อัตโนมัติ</h2>
+                            <p class="text-xs sm:text-sm text-slate-500">ระบบถูกกำหนดค่า Web App URL เรียบร้อยแล้ว ข้อมูลจะถูกบันทึกส่งตรงสู่ Google Sheets ทันทีที่กดบันทึกรายงาน</p>
+                        </div>
+                    </div>
 
-                        <div class="p-4 bg-slate-900 rounded-xl text-slate-100 space-y-2">
-                            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
-                                <span class="font-bold text-blue-400 text-sm font-prompt">ขั้นตอนที่ 2: คัดลอกโค้ด Google Apps Script (Code.gs)</span>
-                                <button onclick="copyGasCode()" class="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-bold transition-all">
-                                    <i class="fa-solid fa-copy mr-1"></i> คัดลอกโค้ด
+                    <div class="space-y-4 text-sm text-slate-700 leading-relaxed">
+                        <div class="bg-blue-50 border border-blue-200 rounded-2xl p-5 space-y-3">
+                            <h3 class="font-bold text-blue-900 font-prompt text-base flex items-center gap-2">
+                                <i class="fa-solid fa-circle-check text-blue-600"></i> Web App URL ปัจจุบันที่ใช้งาน:
+                            </h3>
+                            <div class="bg-white p-3 rounded-xl border border-blue-200 font-mono text-xs text-blue-800 break-all select-all">
+                                https://script.google.com/macros/s/AKfycbxCha6DnT3Rpbkyjt0-P5_vh8HjLTcTZMA7FvdRPVsQ3Y68mjuB35C11izRm6gqi63uQA/exec
+                            </div>
+                            <div class="flex items-center gap-3 pt-2">
+                                <input type="text" id="customWebappUrl" value="https://script.google.com/macros/s/AKfycbxCha6DnT3Rpbkyjt0-P5_vh8HjLTcTZMA7FvdRPVsQ3Y68mjuB35C11izRm6gqi63uQA/exec" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-mono">
+                                <button type="button" onclick="saveWebappUrl()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs shrink-0">
+                                    บันทึก URL
                                 </button>
                             </div>
-                            <pre id="gasCodeBlock" class="text-sky-300 p-2 overflow-x-auto text-xs font-mono">
-function doGet(e) {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  var rows = sheet.getDataRange().getValues();
-  var reports = [];
-  
-  if (rows.length > 1) {
-    for (var i = 1; i < rows.length; i++) {
-      var r = rows[i];
-      if (!r[1]) continue;
-      var volunteers = [];
-      for (var vIdx = 0; vIdx &lt; 6; vIdx++) {
-        var baseCol = 4 + (vIdx * 5);
-        if (r[baseCol]) {
-          var fullNameFull = r[baseCol];
-          var prefix = "นาย";
-          if (fullNameFull.indexOf("นางสาว") === 0) prefix = "นางสาว";
-          else if (fullNameFull.indexOf("นาง") === 0) prefix = "นาง";
-          
-          var nameOnly = fullNameFull.replace(/^(นาย|นางสาว|นาง)/, "");
-          volunteers.push({
-            personNo: vIdx + 1,
-            prefix: prefix,
-            fullname: nameOnly,
-            idCard: r[baseCol + 1] || "",
-            houseNo: r[baseCol + 2] || "",
-            occupation: r[baseCol + 3] || "",
-            phone: r[baseCol + 4] || ""
-          });
-        }
-      }
-      
-      var males = volunteers.filter(function(v) { return v.prefix === "นาย"; }).length;
-      reports.push({
-        id: r[1] + "_Moo" + r[2],
-        tambon: r[1],
-        moo: String(r[2]),
-        villageName: r[3],
-        volunteersCount: volunteers.length,
-        malesCount: males,
-        femalesCount: volunteers.length - males,
-        volunteers: volunteers,
-        updatedAt: new Date(r[0]).toLocaleDateString('th-TH')
-      });
-    }
-  }
-  
-  return ContentService.createTextOutput(JSON.stringify({ "reports": reports }))
-    .setMimeType(ContentService.MimeType.JSON);
-}
-
-function doPost(e) {
-  try {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    
-    if (sheet.getLastRow() === 0) {
-      sheet.appendRow([
-        "วัน-เวลาบันทึก", "ตำบล", "หมู่ที่", "ชื่อหมู่บ้าน",
-        "คนที่ 1 ชื่อ-สกุล", "เลขบัตรประชาชน 1", "บ้านเลขที่ 1", "อาชีพ 1", "โทรศัพท์ 1",
-        "คนที่ 2 ชื่อ-สกุล", "เลขบัตรประชาชน 2", "บ้านเลขที่ 2", "อาชีพ 2", "โทรศัพท์ 2",
-        "คนที่ 3 ชื่อ-สกุล", "เลขบัตรประชาชน 3", "บ้านเลขที่ 3", "อาชีพ 3", "โทรศัพท์ 3",
-        "คนที่ 4 ชื่อ-สกุล", "เลขบัตรประชาชน 4", "บ้านเลขที่ 4", "อาชีพ 4", "โทรศัพท์ 4",
-        "คนที่ 5 ชื่อ-สกุล", "เลขบัตรประชาชน 5", "บ้านเลขที่ 5", "อาชีพ 5", "โทรศัพท์ 5",
-        "คนที่ 6 ชื่อ-สกุล", "เลขบัตรประชาชน 6", "บ้านเลขที่ 6", "อาชีพ 6", "โทรศัพท์ 6"
-      ]);
-    }
-    
-    var data = JSON.parse(e.postData.contents);
-    
-    var row = [
-      new Date(), data.tambon, data.moo, data.villageName
-    ];
-    
-    for (var i = 0; i < 6; i++) {
-      if (data.volunteers && data.volunteers[i]) {
-        var v = data.volunteers[i];
-        row.push(v.prefix + v.fullname, v.idCard, v.houseNo, v.occupation, v.phone);
-      } else {
-        row.push("", "", "", "", "");
-      }
-    }
-    
-    sheet.appendRow(row);
-    
-    return ContentService.createTextOutput(JSON.stringify({ "result": "success" }))
-      .setMimeType(ContentService.MimeType.JSON);
-  } catch (err) {
-    return ContentService.createTextOutput(JSON.stringify({ "result": "error", "error": err.toString() }))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-}
-</pre>
                         </div>
 
-                        <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-200 space-y-2">
-                            <span class="font-bold text-emerald-950 block text-base font-prompt">ขั้นตอนที่ 3: Deploy เป็น Web App ให้ทุกคนกรอกได้แบบไม่ต้อง Sign-in</span>
-                            <p>1. กดปุ่ม <span class="font-bold text-blue-700">การทำให้ใช้งานได้ (Deploy)</span> &rarr; <span class="font-bold">การทำให้ใช้งานได้ใหม่ (New Deployment)</span></p>
-                            <p>2. เลือกประเภทเป็น <span class="font-bold">เว็บแอป (Web App)</span></p>
-                            <p>3. ตั้งค่า <span class="font-bold">ผู้มีสิทธิ์เข้าถึง (Who has access):</span> เลือกเป็น <span class="text-emerald-800 font-bold bg-emerald-200/80 px-2 py-0.5 rounded">ทุกคน (Anyone)</span></p>
-                            <p>4. กดปุ่มทำให้ใช้งานได้ คัดลอก Web App URL ที่ได้นำมาวางในช่องด้านบน</p>
+                        <div class="border border-slate-200 rounded-2xl p-5 space-y-3">
+                            <h4 class="font-bold text-slate-900 font-prompt">คำแนะนำสำหรับ Google Apps Script Code (ฝั่ง Google Sheets)</h4>
+                            <p class="text-xs text-slate-600">เพื่อให้การรับส่งข้อมูลสมบูรณ์ โค้ดใน Google Apps Script ควรมีฟังก์ชันรับค่าแบบ <code>e.parameter</code> หรือ <code>JSON.parse(e.postData.contents)</code> ดังนี้:</p>
+                            <pre class="bg-slate-900 text-emerald-400 p-4 rounded-xl text-xs font-mono overflow-x-auto">
+function doPost(e) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName("Sheet1") || ss.getActiveSheet();
+  
+  var data = JSON.parse(e.postData.contents);
+  
+  sheet.appendRow([
+    new Date(),
+    data.tambon,
+    data.villageName,
+    data.volunteersSummary,
+    data.maleCount,
+    data.femaleCount
+  ]);
+  
+  return ContentService.createTextOutput(JSON.stringify({"status": "success"})).setMimeType(ContentService.MimeType.JSON);
+}</pre>
                         </div>
                     </div>
                 </div>
@@ -653,1200 +533,798 @@ function doPost(e) {
     </div>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 text-xs py-6 border-t border-slate-800 mt-12 no-print">
-        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
-            <p class="text-slate-300 font-semibold font-prompt">
-                ระบบรายงานผลการคัดเลือกอาสาพัฒนาชุมชน (อช.) อำเภอห้วยราช จังหวัดบุรีรัมย์
-            </p>
-            <p>
-                สำนักงานพัฒนาชุมชนอำเภอห้วยราช | ครอบคลุม 8 ตำบล 80 หมู่บ้าน
-            </p>
+    <footer class="bg-white border-t border-slate-200 py-6 mt-12 no-print">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500 space-y-1">
+            <p class="font-medium text-slate-700 font-prompt">สำนักงานพัฒนาชุมชนอำเภอห้วยราช จังหวัดบุรีรัมย์</p>
+            <p>ระบบบันทึกข้อมูลอาสาพัฒนาชุมชน (อช.) ออนไลน์ พัฒนาเพื่อความสะดวกรวดเร็วและแม่นยำ</p>
         </div>
     </footer>
 
-    <!-- Share Link Modal -->
-    <div id="shareModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden no-print">
-        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 space-y-4">
+    <!-- MODAL: Share Link -->
+    <div id="shareModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-5 animate-in fade-in zoom-in duration-200">
             <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                <div class="flex items-center gap-2.5 text-blue-900 font-bold text-lg font-prompt">
-                    <i class="fa-solid fa-share-nodes text-blue-600 text-xl"></i>
-                    <span>แชร์ลิงก์แบบฟอร์มไปยัง LINE / Facebook</span>
-                </div>
-                <button onclick="closeShareModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold p-1">
+                <h3 class="font-bold text-slate-800 text-lg font-prompt flex items-center gap-2">
+                    <i class="fa-solid fa-share-nodes text-blue-600"></i> คัดลอกลิงก์ส่งต่อ
+                </h3>
+                <button onclick="closeShareModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-all">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-
-            <div class="bg-blue-50 border border-blue-200 rounded-xl p-3.5 text-xs text-blue-900 space-y-1.5">
-                <div class="font-bold flex items-center gap-1.5 text-blue-950">
-                    <i class="fa-solid fa-circle-info text-blue-600"></i>
-                    <span>คำแนะนำสำหรับการแชร์ลิงก์:</span>
-                </div>
-                <p>
-                    ระบุลิงก์เว็บไซต์ของคุณ (เช่น บน GitHub Pages หรือเว็บโฮสติ้ง) เพื่อให้ผู้ใหญ่บ้านและผู้กรอกสามารถเปิดเข้าใช้งานจากมือถือได้ทันที
-                </p>
-            </div>
-
-            <div class="space-y-2">
-                <label for="publicShareUrlInput" class="block text-xs font-bold text-slate-700">
-                    ระบุลิงก์เว็บไซต์สาธารณะของคุณ (Public URL)
-                </label>
-                <div class="flex gap-2">
-                    <input type="url" id="publicShareUrlInput" placeholder="https://yourname.github.io/och-huairach/ หรือ https://..." class="flex-1 px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm font-mono focus:ring-2 focus:ring-blue-500">
-                    <button onclick="savePublicShareUrl()" type="button" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl transition-all shrink-0">
-                        บันทึกลิงก์
-                    </button>
-                </div>
-            </div>
-
-            <div class="pt-2 flex flex-col sm:flex-row items-center justify-end gap-2 border-t border-slate-100">
-                <button onclick="copyFormShareLink()" type="button" class="w-full sm:w-auto px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-md flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-copy"></i>
-                    <span>คัดลอกลิงก์ส่งต่อ</span>
+            <p class="text-xs text-slate-600">คัดลอกลิงก์นี้ส่งให้ผู้นำชุมชนหรือเจ้าหน้าที่ อช. เพื่อกรอกแบบรายงานผ่านมือถือหรือคอมพิวเตอร์:</p>
+            <div class="flex items-center gap-2 bg-slate-50 p-2.5 rounded-2xl border border-slate-200">
+                <input type="text" id="shareUrlInput" readonly class="w-full bg-transparent text-xs text-slate-700 outline-none font-mono px-2">
+                <button onclick="copyShareUrl()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs shrink-0 flex items-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-copy"></i> คัดลอก
                 </button>
-                <button onclick="closeShareModal()" type="button" class="w-full sm:w-auto px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs rounded-xl">
-                    ปิดหน้าต่าง
-                </button>
+            </div>
+            <div class="text-center pt-2">
+                <span id="copySuccessMsg" class="text-xs font-semibold text-emerald-600 hidden"><i class="fa-solid fa-check"></i> คัดลอกลิงก์สำเร็จแล้ว!</span>
             </div>
         </div>
     </div>
 
-    <!-- Custom Reset Confirmation Modal -->
-    <div id="resetConfirmModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden no-print">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 space-y-4">
-            <div class="flex items-center gap-3 text-rose-600 font-bold text-lg font-prompt">
-                <div class="w-10 h-10 rounded-xl bg-rose-100 flex items-center justify-center text-xl shrink-0">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                </div>
-                <span>ยืนยันการล้างข้อมูล?</span>
+    <!-- MODAL: Reset Confirmation -->
+    <div id="resetModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl">
+            <div class="w-16 h-16 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center mx-auto text-2xl">
+                <i class="fa-solid fa-triangle-exclamation"></i>
             </div>
-            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                คุณต้องการล้างข้อมูลในช่องกรอกของแบบฟอร์มปัจจุบันทั้งหมดใช่หรือไม่? (ข้อมูลที่บันทึกไว้ล่วงหน้าจะไม่ถูกลบ)
-            </p>
-            <div class="flex items-center justify-end gap-3 pt-2">
-                <button type="button" onclick="closeResetConfirmationModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl">
-                    ยกเลิก
-                </button>
-                <button type="button" onclick="confirmResetForm()" class="px-5 py-2 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-xl shadow-md">
-                    ล้างข้อมูล
-                </button>
+            <h3 class="font-bold text-slate-800 text-lg font-prompt">ยืนยันการล้างข้อมูล?</h3>
+            <p class="text-xs text-slate-500">ข้อมูลที่กำลังกรอกในฟอร์มนี้จะถูกล้างค่าทั้งหมด คุณต้องการดำเนินการต่อหรือไม่</p>
+            <div class="flex items-center gap-3 pt-2">
+                <button onclick="closeResetModal()" class="w-1/2 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs">ยกเลิก</button>
+                <button onclick="confirmResetForm()" class="w-1/2 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl text-xs shadow-md">ล้างข้อมูล</button>
             </div>
         </div>
     </div>
 
+    <!-- MODAL: Notification message box (Replacing alert) -->
+    <div id="customModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl">
+            <div id="modalIconContainer" class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto text-2xl">
+                <i id="modalIcon" class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 id="modalTitle" class="font-bold text-slate-800 text-lg font-prompt">แจ้งเตือน</h3>
+            <p id="modalMessage" class="text-xs text-slate-600 leading-relaxed">ข้อความแจ้งเตือนระบบ</p>
+            <button onclick="closeCustomModal()" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs shadow-md">ตกลง</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
     <script>
-        // Official Master Data for Sub-districts (ตำบล) and Villages (หมู่บ้าน) in Huai Rach District, Buri Ram
-        const huaiRachData = [
+        // Official tambons and villages data updated precisely from the provided document structure (8 Tambons, total 81 villages)
+        const tambonsData = [
             {
-                tambon: "ห้วยราช",
+                name: "ตำบลโคกเหล็ก",
                 villages: [
-                    { moo: "1", name: "พลวง" },
-                    { moo: "2", name: "สี่เหลี่ยม" },
-                    { moo: "3", name: "ตลาดห้วยราช" },
-                    { moo: "4", name: "โคกกรวด" },
-                    { moo: "5", name: "บุตาแพง" },
-                    { moo: "6", name: "กรวด" },
-                    { moo: "7", name: "ดวน" },
-                    { moo: "8", name: "กราด" },
-                    { moo: "9", name: "สง่างาม" },
-                    { moo: "10", name: "สุขสมบูรณ์" }
+                    "บ้านโคกอรุณ หมู่ที่ 1", "บ้านหนองหว้า หมู่ที่ 2", "บ้านกระสังพัฒนา หมู่ที่ 3", 
+                    "บ้านถนน หมู่ที่ 4", "บ้านโคกเหล็ก หมู่ที่ 5", "บ้านหว้า หมู่ที่ 6", 
+                    "บ้านกระสังสามัคคี หมู่ที่ 7", "บ้านโคกขมิ้น หมู่ที่ 8", "บ้านโคกขี้ตุ่น หมู่ที่ 9", "บ้านตาเมิน หมู่ที่ 10", "บ้านถนนประชาอาสา หมู่ที่ 11"
                 ]
             },
             {
-                tambon: "ห้วยราชา",
+                name: "ตำบลตาเสา",
                 villages: [
-                    { moo: "1", name: "ห้วยราช" },
-                    { moo: "2", name: "ตะครอง" },
-                    { moo: "3", name: "เมืองต่ำ" },
-                    { moo: "4", name: "ส่วนรวม" },
-                    { moo: "5", name: "ตะไก้" },
-                    { moo: "6", name: "ห้วยแก้ว" },
-                    { moo: "7", name: "เพชร" },
-                    { moo: "8", name: "ห้วยราชพัฒนา" },
-                    { moo: "9", name: "ห้วยราชา" },
-                    { moo: "10", name: "สวายเจริญ" }
+                    "บ้านตาเสา หมู่ที่ 1", "บ้านหว้า หมู่ที่ 2", "บ้านทานตะวัน หมู่ที่ 3", 
+                    "บ้านกระโดน หมู่ที่ 4", "บ้านมะขาม หมู่ที่ 5", "บ้านตาเสา หมู่ที่ 6", 
+                    "บ้านขาม หมู่ที่ 7", "บ้านสามัคคี หมู่ที่ 8", "บ้านหนองแวง หมู่ที่ 9", "บ้านบ่อทอง หมู่ที่ 10"
                 ]
             },
             {
-                tambon: "สามแวง",
+                name: "ตำบลบ้านตะโก",
                 villages: [
-                    { moo: "1", name: "สามแวง" },
-                    { moo: "2", name: "ใหม่" },
-                    { moo: "3", name: "ใหม่" },
-                    { moo: "4", name: "สะแกสามัคคี" },
-                    { moo: "5", name: "ใหม่" },
-                    { moo: "6", name: "โคกเจริญ" },
-                    { moo: "7", name: "ใหม่ทักษิณ" },
-                    { moo: "8", name: "เพชรน้อย" },
-                    { moo: "9", name: "โคกกระเบา" }
+                    "บ้านตะโก หมู่ที่ 1", "บ้านโสน หมู่ที่ 2", "บ้านโคกโพธิ์ หมู่ที่ 3", 
+                    "บ้านโชคกราด หมู่ที่ 4", "บ้านโชคดี หมู่ที่ 5", "บ้านปรือเวง หมู่ที่ 6", 
+                    "บ้านเกตุเหนือ หมู่ที่ 7", "บ้านเกตุใต้ หมู่ที่ 8", "บ้านหนองกก หมู่ที่ 9"
                 ]
             },
             {
-                tambon: "ตาเสา",
+                name: "ตำบลเมืองโพธิ์",
                 villages: [
-                    { moo: "1", name: "ตาเสา" },
-                    { moo: "2", name: "หว้า" },
-                    { moo: "3", name: "ทานตะวัน" },
-                    { moo: "4", name: "กระโดน" },
-                    { moo: "5", name: "มะขาม" },
-                    { moo: "6", name: "ตาเสา" },
-                    { moo: "7", name: "ขาม" },
-                    { moo: "8", name: "สามัคคี" },
-                    { moo: "9", name: "หนองแวง" },
-                    { moo: "10", name: "บ่อทอง" }
+                    "บ้านเมืองโพธิ์ หมู่ที่ 1", "บ้านปะคำ หมู่ที่ 2", "บ้านพูนสุข หมู่ที่ 3", 
+                    "บ้านประดู่ หมู่ที่ 4", "บ้านเมืองเหนือ หมู่ที่ 5", "บ้านเมืองโพธิ์ หมู่ที่ 6", 
+                    "บ้านศรีเจริญ หมู่ที่ 7", "บ้านไผน้อย หมู่ที่ 8", "บ้านจาน หมู่ที่ 9"
                 ]
             },
             {
-                tambon: "บ้านตะโก",
+                name: "ตำบลสนวน",
                 villages: [
-                    { moo: "1", name: "ตะโก" },
-                    { moo: "2", name: "โสน" },
-                    { moo: "3", name: "โคกโพธิ์" },
-                    { moo: "4", name: "โชคกราด" },
-                    { moo: "5", name: "โชคดี" },
-                    { moo: "6", name: "ปรือเวง" },
-                    { moo: "7", name: "เกตุเหนือ" },
-                    { moo: "8", name: "เกตุใต้" },
-                    { moo: "9", name: "หนองกก" }
+                    "บ้านสวายจีกน้อย หมู่ที่ 1", "บ้านสนวนนอก หมู่ที่ 2", "บ้านสนวนใน หมู่ที่ 3", 
+                    "บ้านแซะซอ หมู่ที่ 4", "บ้านสวายจีกน้อย หมู่ที่ 5", "บ้านจบก หมู่ที่ 6", 
+                    "บ้านโคกกลัน หมู่ที่ 7", "บ้านพลวงน้อย หมู่ที่ 8", "บ้านระกา หมู่ที่ 9", "บ้านหนองโพธิ์ หมู่ที่ 10", "บ้านหนองบัว หมู่ที่ 11", "บ้านโคกสุวรรณ หมู่ที่ 12"
                 ]
             },
             {
-                tambon: "สนวน",
+                name: "ตำบลสามแวง",
                 villages: [
-                    { moo: "1", name: "สวายจีกน้อย" },
-                    { moo: "2", name: "สนวนนอก" },
-                    { moo: "3", name: "สนวนใน" },
-                    { moo: "4", name: "แซะซอ" },
-                    { moo: "5", name: "สวายจีกน้อย" },
-                    { moo: "6", name: "จบก" },
-                    { moo: "7", name: "โคกกลัน" },
-                    { moo: "8", name: "พลวงน้อย" },
-                    { moo: "9", name: "ระกา" },
-                    { moo: "10", name: "หนองโพธิ์" },
-                    { moo: "11", name: "หนองบัว" },
-                    { moo: "12", name: "โคกสุวรรณ" }
+                    "บ้านสามแวง หมู่ที่ 1", "บ้านใหม่ หมู่ที่ 2", "บ้านใหม่ หมู่ที่ 3", 
+                    "บ้านสะแกสามัคคี หมู่ที่ 4", "บ้านใหม่ หมู่ที่ 5", "บ้านโคกเจริญ หมู่ที่ 6", 
+                    "บ้านใหม่ทักษิณ หมู่ที่ 7", "บ้านเพชรน้อย หมู่ที่ 8", "บ้านโคกกระเบา หมู่ที่ 9"
                 ]
             },
             {
-                tambon: "โคกเหล็ก",
+                name: "ตำบลห้วยราช",
                 villages: [
-                    { moo: "1", name: "โคกอรุณ" },
-                    { moo: "2", name: "หนองหว้า" },
-                    { moo: "3", name: "กระสังพัฒนา" },
-                    { moo: "4", name: "ถนน" },
-                    { moo: "5", name: "โคกเหล็ก" },
-                    { moo: "6", name: "หว้า" },
-                    { moo: "7", name: "กระสังสามัคคี" },
-                    { moo: "8", name: "โคกขมิ้น" },
-                    { moo: "9", name: "โคกขี้ตุ่น" },
-                    { moo: "10", name: "ตาเมิน" },
-                    { moo: "11", name: "ถนนประชาอาสา" }
+                    "บ้านพลวง หมู่ที่ 1", "บ้านสี่เหลี่ยม หมู่ที่ 2", "บ้านตลาดห้วยราช หมู่ที่ 3", 
+                    "บ้านโคกกรวด หมู่ที่ 4", "บ้านบุตาแพง หมู่ที่ 5", "บ้านกรวด หมู่ที่ 6", 
+                    "บ้านดวน หมู่ที่ 7", "บ้านกราด หมู่ที่ 8", "บ้านสง่างาม หมู่ที่ 9", "บ้านสุขสมบูรณ์ หมู่ที่ 10"
                 ]
             },
             {
-                tambon: "เมืองโพธิ์",
+                name: "ตำบลห้วยราชา",
                 villages: [
-                    { moo: "1", name: "เมืองโพธิ์" },
-                    { moo: "2", name: "ปะคำ" },
-                    { moo: "3", name: "พูนสุข" },
-                    { moo: "4", name: "ประดู่" },
-                    { moo: "5", name: "เมืองเหนือ" },
-                    { moo: "6", name: "เมืองโพธิ์" },
-                    { moo: "7", name: "ศรีเจริญ" },
-                    { moo: "8", name: "ไผ่น้อย" },
-                    { moo: "9", name: "จาน" }
+                    "บ้านห้วยราช หมู่ที่ 1", "บ้านตะครอง หมู่ที่ 2", "บ้านเมืองต่ำ หมู่ที่ 3", 
+                    "บ้านส่วนรวม หมู่ที่ 4", "บ้านตะไก่ หมู่ที่ 5", "บ้านห้วยแก้ว หมู่ที่ 6", 
+                    "บ้านเพชร หมู่ที่ 7", "บ้านห้วยราชพัฒนา หมู่ที่ 8", "บ้านห้วยราชา หมู่ที่ 9", "บ้านสวายเจริญ หมู่ที่ 10"
                 ]
             }
         ];
 
-        const STORAGE_KEY = "huai_rach_och_reports_v2";
-        const SCRIPT_URL_KEY = "huai_rach_script_url";
-        const PUBLIC_SHARE_URL_KEY = "huai_rach_public_share_url";
-        const CUSTOM_LOGO_URL_KEY = "huai_rach_custom_logo_url";
+        let activeTab = 'formTab';
+        let dashFilterStatus = 'all';
+        let reportsData = JSON.parse(localStorage.getItem('huairat_cdd_reports_v2') || '{}');
+        let webappUrl = localStorage.getItem('huairat_cdd_webapp_url') || 'https://script.google.com/macros/s/AKfycbxCha6DnT3Rpbkyjt0-P5_vh8HjLTcTZMA7FvdRPVsQ3Y68mjuB35C11izRm6gqi63uQA/exec';
+        let activePersonsCount = 4; // Default 4 volunteers (up to 6)
 
-        let submittedReports = [];
-        let activePersonsCount = 4;
-        let currentScriptUrl = "";
-        let currentPublicShareUrl = "";
-        let currentCustomLogoUrl = "";
-
-        // Load application data on load and try to fetch from Google Sheets if URL exists
-        window.addEventListener('DOMContentLoaded', () => {
-            loadFromLocalStorage();
-            applyCustomLogo();
+        window.onload = function() {
             initTambonDropdowns();
-            renderVolunteerFormCards();
-            updateDashboard();
-            renderRecordsTable();
-            renderPrintSelectOptions();
-            checkSavedScriptUrl();
+            renderVolunteersForm();
+            renderDashboard();
+            renderReportList();
+            renderPrintPreview();
+            updateDashboardCounters();
+            
+            document.getElementById('shareUrlInput').value = window.location.href;
+            document.getElementById('customWebappUrl').value = webappUrl;
+        };
 
-            if (currentScriptUrl) {
-                fetchReportsFromCloud();
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-500/20');
+                btn.classList.add('text-slate-600', 'hover:text-blue-700', 'hover:bg-blue-50');
+            });
+
+            document.getElementById(tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-slate-600', 'hover:text-blue-700', 'hover:bg-blue-50');
+                activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-500/20');
             }
-        });
+            activeTab = tabId;
 
-        function loadFromLocalStorage() {
-            try {
-                const data = localStorage.getItem(STORAGE_KEY);
-                submittedReports = data ? JSON.parse(data) : [];
-                currentScriptUrl = localStorage.getItem(SCRIPT_URL_KEY) || "";
-                currentPublicShareUrl = localStorage.getItem(PUBLIC_SHARE_URL_KEY) || "";
-                currentCustomLogoUrl = localStorage.getItem(CUSTOM_LOGO_URL_KEY) || "";
-            } catch (e) {
-                console.error("Error loading local storage", e);
-                submittedReports = [];
-            }
-        }
-
-        function saveToLocalStorage() {
-            try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(submittedReports));
-            } catch (e) {
-                console.error("Error saving local storage", e);
-            }
-        }
-
-        function applyCustomLogo() {
-            if (currentCustomLogoUrl) {
-                const hImg = document.getElementById('headerLogoImg');
-                const pImg = document.getElementById('printLogoImg');
-                if (hImg) hImg.src = currentCustomLogoUrl;
-                if (pImg) pImg.src = currentCustomLogoUrl;
-            }
-            const input = document.getElementById('customLogoUrlInput');
-            if (input) input.value = currentCustomLogoUrl;
-        }
-
-        function saveCustomLogoUrl() {
-            const input = document.getElementById('customLogoUrlInput');
-            if (!input) return;
-            currentCustomLogoUrl = input.value.trim();
-            localStorage.setItem(CUSTOM_LOGO_URL_KEY, currentCustomLogoUrl);
-            applyCustomLogo();
-            showToast("บันทึกโลโก้ อช. เรียบร้อยแล้ว", "success");
-        }
-
-        function checkSavedScriptUrl() {
-            const input = document.getElementById('googleScriptUrlInput');
-            const statusDiv = document.getElementById('urlConnectionStatus');
-
-            if (input) input.value = currentScriptUrl;
-
-            if (statusDiv) {
-                if (currentScriptUrl) {
-                    statusDiv.className = "text-xs font-semibold text-emerald-700 flex items-center gap-1.5";
-                    statusDiv.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600"></i> เชื่อมต่อ Google Sheets เรียบร้อย (ข้อมูลส่งลงสเปรดชีตอัตโนมัติเมื่อกดบันทึก)`;
-                } else {
-                    statusDiv.className = "text-xs font-semibold text-blue-700 flex items-center gap-1.5";
-                    statusDiv.innerHTML = `<i class="fa-solid fa-circle-info"></i> ยังไม่ได้เชื่อมต่อ Google Sheets (ระบบจะบันทึกข้อมูลไว้ในเครื่องของคุณ)`;
-                }
-            }
-        }
-
-        function saveScriptUrl() {
-            const url = document.getElementById('googleScriptUrlInput').value.trim();
-            if (url && !url.startsWith('https://script.google.com')) {
-                showToast("กรุณากรอก Web App URL ที่ถูกต้องจาก Google Apps Script", "error");
-                return;
-            }
-
-            currentScriptUrl = url;
-            localStorage.setItem(SCRIPT_URL_KEY, currentScriptUrl);
-            checkSavedScriptUrl();
-
-            if (url) {
-                showToast("บันทึกการเชื่อมต่อ Google Sheets สำเร็จ! กำลังดึงข้อมูล...", "success");
-                fetchReportsFromCloud();
-            } else {
-                showToast("ยกเลิกการเชื่อมต่อ Google Sheets แล้ว", "info");
-            }
-        }
-
-        async function fetchReportsFromCloud() {
-            if (!currentScriptUrl) return;
-            try {
-                showToast("กำลังซิงค์ข้อมูลจาก Google Sheets...", "info");
-                const res = await fetch(currentScriptUrl + "?action=getReports");
-                const data = await res.json();
-                if (data && Array.isArray(data.reports) && data.reports.length > 0) {
-                    submittedReports = data.reports;
-                    saveToLocalStorage();
-                    updateDashboard();
-                    renderRecordsTable();
-                    renderPrintSelectOptions();
-                    showToast("ซิงค์ข้อมูลจาก Google Sheets สำเร็จเรียบร้อย", "success");
-                }
-            } catch (err) {
-                console.error("Fetch cloud reports error:", err);
-            }
+            if (tabId === 'dashboardTab') renderDashboard();
+            if (tabId === 'listTab') renderReportList();
+            if (tabId === 'printTab') renderPrintPreview();
         }
 
         function initTambonDropdowns() {
             const tambonSelect = document.getElementById('tambonSelect');
-            const filterTambon = document.getElementById('filterTambon');
+            const dashFilter = document.getElementById('dashTambonFilter');
+            const listFilter = document.getElementById('listTambonFilter');
+            const printSelect = document.getElementById('printTambonSelect');
 
-            tambonSelect.innerHTML = `<option value="">-- โปรดเลือกตำบล (${huaiRachData.length} ตำบล) --</option>`;
-            filterTambon.innerHTML = '<option value="">-- แสดงทุกตำบล --</option>';
+            tambonSelect.innerHTML = '<option value="">-- โปรดเลือกตำบล (8 ตำบล) --</option>';
+            if(dashFilter) dashFilter.innerHTML = '<option value="">-- ทุกตำบล (8 ตำบล) --</option>';
+            if(listFilter) listFilter.innerHTML = '<option value="">-- ทุกตำบล --</option>';
+            if(printSelect) printSelect.innerHTML = '';
 
-            huaiRachData.forEach(item => {
-                const opt1 = document.createElement('option');
-                opt1.value = item.tambon;
-                opt1.textContent = `ตำบล${item.tambon} (${item.villages.length} หมู่บ้าน)`;
-                tambonSelect.appendChild(opt1);
-
-                const opt2 = document.createElement('option');
-                opt2.value = item.tambon;
-                opt2.textContent = `ตำบล${item.tambon}`;
-                filterTambon.appendChild(opt2);
+            tambonsData.forEach(t => {
+                tambonSelect.add(new Option(t.name, t.name));
+                if(dashFilter) dashFilter.add(new Option(t.name, t.name));
+                if(listFilter) listFilter.add(new Option(t.name, t.name));
+                if(printSelect) printSelect.add(new Option(t.name, t.name));
             });
         }
 
         function handleTambonChange() {
-            const tambonVal = document.getElementById('tambonSelect').value;
+            const tambonName = document.getElementById('tambonSelect').value;
             const villageSelect = document.getElementById('villageSelect');
-
-            villageSelect.innerHTML = '';
-            
-            if (!tambonVal) {
-                villageSelect.disabled = true;
-                villageSelect.innerHTML = '<option value="">-- โปรดเลือกตำบลก่อน --</option>';
-                hideVillageNotice();
-                return;
-            }
-
-            const tambonObj = huaiRachData.find(t => t.tambon === tambonVal);
-            if (!tambonObj) return;
-
-            villageSelect.disabled = false;
             villageSelect.innerHTML = '<option value="">-- โปรดเลือกหมู่บ้าน --</option>';
+            villageSelect.disabled = true;
 
-            tambonObj.villages.forEach(v => {
-                const opt = document.createElement('option');
-                opt.value = JSON.stringify({ moo: v.moo, name: v.name });
-                opt.textContent = `หมู่ที่ ${v.moo} บ้าน${v.name}`;
-                villageSelect.appendChild(opt);
-            });
+            if (!tambonName) return;
 
-            hideVillageNotice();
+            const tambonObj = tambonsData.find(t => t.name === tambonName);
+            if (tambonObj) {
+                tambonObj.villages.forEach(v => {
+                    villageSelect.add(new Option(v, v));
+                });
+                villageSelect.disabled = false;
+            }
+            clearVolunteerInputs();
+            updateVillageStatusNotice(null);
         }
 
         function handleVillageChange() {
-            const tambonVal = document.getElementById('tambonSelect').value;
-            const villageVal = document.getElementById('villageSelect').value;
-            const notice = document.getElementById('villageStatusNotice');
-
-            if (!tambonVal || !villageVal) {
-                hideVillageNotice();
+            const villageName = document.getElementById('villageSelect').value;
+            if (!villageName) {
+                updateVillageStatusNotice(null);
                 return;
             }
 
-            const villageObj = JSON.parse(villageVal);
-            const existing = submittedReports.find(r => r.tambon === tambonVal && r.moo === villageObj.moo);
+            const existing = reportsData[villageName];
+            updateVillageStatusNotice(existing, villageName);
+            if (existing && existing.volunteers) {
+                fillVolunteerData(existing.volunteers);
+            } else {
+                clearVolunteerInputs();
+            }
+        }
 
-            notice.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'text-emerald-800', 'bg-blue-50', 'border-blue-200', 'text-blue-900');
+        function updateVillageStatusNotice(report, villageName) {
+            const notice = document.getElementById('villageStatusNotice');
+            if (!notice) return;
 
-            if (existing) {
-                notice.classList.add('bg-blue-50', 'border-blue-200', 'text-blue-900');
+            if (!villageName) {
+                notice.classList.add('hidden');
+                return;
+            }
+
+            notice.classList.remove('hidden');
+            if (report) {
+                notice.className = "mt-4 p-3.5 rounded-xl border border-emerald-300 bg-emerald-50 text-emerald-900 text-xs sm:text-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2";
                 notice.innerHTML = `
                     <div class="flex items-center gap-2">
-                        <i class="fa-solid fa-pen-to-square text-blue-600"></i>
-                        <span>หมู่บ้านนี้เคยบันทึกรายงานแล้วเมื่อ ${existing.updatedAt} (การบันทึกใหม่จะเป็นการอัปเดตข้อมูลเดิม)</span>
+                        <i class="fa-solid fa-circle-check text-emerald-600 text-base"></i>
+                        <span>หมู่บ้านนี้ <strong>${villageName}</strong> มีการบันทึกรายงานแล้ว (${report.volunteers.length} คน) สามารถแก้ไขข้อมูลด้านล่างได้</span>
                     </div>
-                    <button type="button" onclick="loadExistingIntoForm('${tambonVal}', '${villageObj.moo}')" class="px-3 py-1 bg-blue-600 text-white rounded-lg text-xs font-bold hover:bg-blue-700 shadow-sm shrink-0">
-                        ดึงข้อมูลเดิมมาแก้ไข
-                    </button>
+                    <span class="text-xs bg-emerald-200 text-emerald-800 font-bold px-2.5 py-1 rounded-lg">บันทึกเมื่อ: ${report.timestamp || '-'}</span>
                 `;
             } else {
-                notice.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-900');
+                notice.className = "mt-4 p-3.5 rounded-xl border border-amber-300 bg-amber-50 text-amber-900 text-xs sm:text-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2";
                 notice.innerHTML = `
                     <div class="flex items-center gap-2">
-                        <i class="fa-solid fa-circle-check text-emerald-600"></i>
-                        <span>หมู่ที่ ${villageObj.moo} บ้าน${villageObj.name} ต.${tambonVal} ยังไม่ได้ส่งรายงาน (สามารถกรอกได้เลย)</span>
+                        <i class="fa-solid fa-triangle-exclamation text-amber-600 text-base"></i>
+                        <span>หมู่บ้าน <strong>${villageName}</strong> ยังไม่ได้บันทึกรายงาน (สถานะ: รอดำเนินการ)</span>
                     </div>
+                    <span class="text-xs bg-amber-200 text-amber-800 font-bold px-2.5 py-1 rounded-lg">ยังไม่รายงาน</span>
                 `;
             }
         }
 
-        function hideVillageNotice() {
-            document.getElementById('villageStatusNotice').classList.add('hidden');
-        }
-
-        function renderVolunteerFormCards() {
+        function renderVolunteersForm() {
             const container = document.getElementById('volunteersContainer');
             container.innerHTML = '';
 
-            const numberTh = ['๑', '๒', '๓', '๔', '๕', '๖'];
+            const thaiNumbers = ["๑", "๒", "๓", "๔", "๕", "๖"];
 
-            for (let i = 1; i <= 6; i++) {
+            for (let i = 1; i <= activePersonsCount; i++) {
                 const isRequired = i <= 4;
-                const isHidden = i > activePersonsCount;
-
                 const card = document.createElement('div');
-                card.id = `volunteerCard_${i}`;
-                card.className = `p-4 sm:p-5 rounded-2xl border transition-all ${isHidden ? 'hidden' : 'block'} ${isRequired ? 'bg-slate-50/80 border-slate-200' : 'bg-blue-50/50 border-blue-200'}`;
-
+                card.id = `volunteerCard-${i}`;
+                card.className = `p-4 sm:p-5 rounded-2xl border ${isRequired ? 'border-blue-200 bg-blue-50/30' : 'border-indigo-200 bg-indigo-50/30'} space-y-4 relative transition-all`;
+                
                 card.innerHTML = `
-                    <div class="flex items-center justify-between border-b border-slate-200/80 pb-3 mb-4">
-                        <div class="flex items-center gap-2.5">
-                            <span class="w-7 h-7 rounded-lg ${isRequired ? 'bg-blue-600 text-white' : 'bg-indigo-600 text-white'} flex items-center justify-center font-bold text-xs shadow-sm">
-                                ${numberTh[i-1]}
+                    <div class="flex items-center justify-between border-b pb-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-xl ${isRequired ? 'bg-blue-600 text-white' : 'bg-indigo-600 text-white'} flex items-center justify-center font-bold text-xs shadow-sm">
+                                ${thaiNumbers[i-1]}
                             </span>
-                            <span class="font-bold text-slate-800 text-sm sm:text-base font-prompt">
-                                คนที่ ${numberTh[i-1]} ${isRequired ? '<span class="text-xs text-rose-500 font-normal">(จำเป็น)</span>' : '<span class="text-xs text-blue-700 font-normal">(เพิ่มเติม)</span>'}
-                            </span>
+                            <h3 class="font-bold text-slate-800 text-sm sm:text-base font-prompt">
+                                อส.พัฒนาชุมชน (อช.) คนที่ ${thaiNumbers[i-1]} ${isRequired ? '<span class="text-rose-500">*</span>' : '<span class="text-xs font-normal text-indigo-600">(เพิ่มเพิ่มเติม)</span>'}
+                            </h3>
                         </div>
-                        ${i > 4 ? `
-                            <button type="button" onclick="toggleOptionalPerson(${i}, false)" class="text-xs text-rose-600 hover:text-rose-800 font-semibold flex items-center gap-1">
-                                <i class="fa-solid fa-trash-can"></i> ลบคนนี้
+                        ${!isRequired ? `
+                            <button type="button" onclick="removeOptionalPerson(${i})" class="text-rose-500 hover:text-rose-700 text-xs font-bold flex items-center gap-1 bg-white px-2.5 py-1 rounded-lg border border-rose-200 shadow-sm">
+                                <i class="fa-solid fa-trash-can"></i> เอาออก
                             </button>
                         ` : ''}
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <div class="lg:col-span-2">
-                            <label class="block text-xs font-bold text-slate-700 mb-1.5">๑. คำนำหน้า - ชื่อ - สกุล ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
-                            <div class="flex gap-2">
-                                <select id="v_prefix_${i}" ${isRequired ? 'required' : ''} onchange="handlePrefixChange(${i})" class="w-1/3 bg-white border border-slate-300 rounded-xl px-2.5 py-2 text-xs sm:text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-blue-500">
-                                    <option value="นาย">นาย</option>
-                                    <option value="นาง">นาง</option>
-                                    <option value="นางสาว">นางสาว</option>
-                                    <option value="อื่นๆ">อื่นๆ</option>
-                                </select>
-                                <input type="text" id="v_fullname_${i}" ${isRequired ? 'required' : ''} placeholder="ชื่อ - นามสกุล" oninput="updateGenderCount()" class="w-2/3 bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 font-medium">
-                            </div>
-                        </div>
-
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 mb-1.5">เพศ ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
-                            <select id="v_gender_${i}" ${isRequired ? 'required' : ''} onchange="updateGenderCount()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs sm:text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-blue-500">
-                                <option value="ชาย">ชาย</option>
-                                <option value="หญิง">หญิง</option>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">คำนำหน้าชื่อ ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
+                            <select id="prefix-${i}" ${isRequired ? 'required' : ''} class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-medium">
+                                <option value="">-- เลือก --</option>
+                                <option value="นาย">นาย</option>
+                                <option value="นาง">นาง</option>
+                                <option value="นางสาว">นางสาว</option>
                             </select>
                         </div>
-
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 mb-1.5">๒. เลขประจำตัวประชาชน (13 หลัก) ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
-                            <input type="text" id="v_idCard_${i}" maxlength="17" ${isRequired ? 'required' : ''} placeholder="x-xxxx-xxxxx-xx-x" oninput="formatThaiIdCard(this)" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs sm:text-sm tracking-wider font-mono focus:ring-2 focus:ring-blue-500">
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">ชื่อ-สกุล ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
+                            <input type="text" id="fullname-${i}" ${isRequired ? 'required' : ''} placeholder="ชื่อและนามสกุล" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs">
                         </div>
-
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 mb-1.5">๓. บ้านเลขที่ ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
-                            <input type="text" id="v_houseNo_${i}" ${isRequired ? 'required' : ''} placeholder="เช่น 12/1 หมู่ 2" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs sm:text-sm focus:ring-2 focus:ring-blue-500">
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">เลขบัตรประชาชน (13 หลัก) ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
+                            <input type="text" id="idcard-${i}" ${isRequired ? 'required' : ''} maxlength="13" placeholder="เลขบัตรประชาชน 13 หลัก" oninput="validateIdCard(this)" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-mono">
                         </div>
-
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 mb-1.5">ประกอบอาชีพ ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
-                            <input type="text" id="v_occupation_${i}" ${isRequired ? 'required' : ''} placeholder="เช่น เกษตรกร, ค้าขาย" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs sm:text-sm focus:ring-2 focus:ring-blue-500">
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">บ้านเลขที่ / ประกอบอาชีพ ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
+                            <input type="text" id="housejob-${i}" ${isRequired ? 'required' : ''} placeholder="เช่น บ้านเลขที่ 123 / เกษตรกรรม" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs">
                         </div>
-
-                        <div class="lg:col-span-2">
-                            <label class="block text-xs font-bold text-slate-700 mb-1.5">๔. หมายเลขโทรศัพท์ ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
-                            <input type="tel" id="v_phone_${i}" maxlength="12" ${isRequired ? 'required' : ''} placeholder="08x-xxx-xxxx" oninput="formatPhone(this)" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs sm:text-sm font-mono focus:ring-2 focus:ring-blue-500">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">หมายเลขโทรศัพท์ ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
+                            <input type="tel" id="phone-${i}" ${isRequired ? 'required' : ''} maxlength="10" placeholder="เบอร์โทร 10 หลัก" oninput="validatePhone(this)" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-mono">
                         </div>
                     </div>
                 `;
-
                 container.appendChild(card);
             }
 
-            updateGenderCount();
+            // Update add buttons visibility
+            document.getElementById('btnAddPerson5').classList.toggle('hidden', activePersonsCount >= 5);
+            document.getElementById('btnAddPerson6').classList.toggle('hidden', activePersonsCount < 5 || activePersonsCount >= 6);
+
+            // Bind gender calculation listener on prefix change
+            for (let i = 1; i <= activePersonsCount; i++) {
+                const pfx = document.getElementById(`prefix-${i}`);
+                if (pfx) pfx.addEventListener('change', updateGenderCounts);
+            }
+            updateGenderCounts();
         }
 
-        function handlePrefixChange(index) {
-            const prefix = document.getElementById(`v_prefix_${index}`).value;
-            const genderSelect = document.getElementById(`v_gender_${index}`);
-
-            if (prefix === "นาย") {
-                genderSelect.value = "ชาย";
-            } else if (prefix === "นาง" || prefix === "นางสาว") {
-                genderSelect.value = "หญิง";
+        function toggleOptionalPerson(personNum, add) {
+            if (add) {
+                activePersonsCount = personNum;
+                renderVolunteersForm();
             }
-            updateGenderCount();
         }
 
-        function toggleOptionalPerson(personIndex, show) {
-            if (show) {
-                activePersonsCount = Math.max(activePersonsCount, personIndex);
-            } else {
-                activePersonsCount = Math.min(activePersonsCount, personIndex - 1);
+        function removeOptionalPerson(personNum) {
+            if (personNum === 5 && activePersonsCount === 6) {
+                // Shift person 6 data to person 5
+                document.getElementById('prefix-5').value = document.getElementById('prefix-6').value;
+                document.getElementById('fullname-5').value = document.getElementById('fullname-6').value;
+                document.getElementById('idcard-5').value = document.getElementById('idcard-6').value;
+                document.getElementById('housejob-5').value = document.getElementById('housejob-6').value;
+                document.getElementById('phone-5').value = document.getElementById('phone-6').value;
             }
-
-            for (let i = 5; i <= 6; i++) {
-                const card = document.getElementById(`volunteerCard_${i}`);
-                if (card) {
-                    if (i <= activePersonsCount) {
-                        card.classList.remove('hidden');
-                        card.classList.add('block');
-                        document.getElementById(`v_fullname_${i}`).required = true;
-                        document.getElementById(`v_idCard_${i}`).required = true;
-                        document.getElementById(`v_houseNo_${i}`).required = true;
-                        document.getElementById(`v_occupation_${i}`).required = true;
-                        document.getElementById(`v_phone_${i}`).required = true;
-                    } else {
-                        card.classList.add('hidden');
-                        card.classList.remove('block');
-                        document.getElementById(`v_fullname_${i}`).required = false;
-                        document.getElementById(`v_idCard_${i}`).required = false;
-                        document.getElementById(`v_houseNo_${i}`).required = false;
-                        document.getElementById(`v_occupation_${i}`).required = false;
-                        document.getElementById(`v_phone_${i}`).required = false;
-                    }
-                }
-            }
-
-            const btn5 = document.getElementById('btnAddPerson5');
-            const btn6 = document.getElementById('btnAddPerson6');
-
-            if (activePersonsCount === 4) {
-                btn5.classList.remove('hidden');
-                btn6.classList.add('hidden');
-            } else if (activePersonsCount === 5) {
-                btn5.classList.add('hidden');
-                btn6.classList.remove('hidden');
-            } else {
-                btn5.classList.add('hidden');
-                btn6.classList.add('hidden');
-            }
-
-            updateGenderCount();
+            activePersonsCount = personNum - 1;
+            renderVolunteersForm();
         }
 
-        function updateGenderCount() {
-            let males = 0;
-            let females = 0;
+        function clearVolunteerInputs() {
+            for (let i = 1; i <= 6; i++) {
+                const p = document.getElementById(`prefix-${i}`);
+                const f = document.getElementById(`fullname-${i}`);
+                const c = document.getElementById(`idcard-${i}`);
+                const hj = document.getElementById(`housejob-${i}`);
+                const ph = document.getElementById(`phone-${i}`);
+                if (p) p.value = "";
+                if (f) f.value = "";
+                if (c) c.value = "";
+                if (hj) hj.value = "";
+                if (ph) ph.value = "";
+            }
+            activePersonsCount = 4;
+            renderVolunteersForm();
+        }
+
+        function fillVolunteerData(volunteers) {
+            activePersonsCount = Math.max(4, volunteers.length);
+            renderVolunteersForm();
+
+            volunteers.forEach((v, idx) => {
+                const i = idx + 1;
+                const p = document.getElementById(`prefix-${i}`);
+                const f = document.getElementById(`fullname-${i}`);
+                const c = document.getElementById(`idcard-${i}`);
+                const hj = document.getElementById(`housejob-${i}`);
+                const ph = document.getElementById(`phone-${i}`);
+                if (p) p.value = v.prefix || "";
+                if (f) f.value = v.fullname || "";
+                if (c) c.value = v.idcard || "";
+                if (hj) hj.value = v.housejob || "";
+                if (ph) ph.value = v.phone || "";
+            });
+            updateGenderCounts();
+        }
+
+        function updateGenderCounts() {
+            let male = 0;
+            let female = 0;
 
             for (let i = 1; i <= activePersonsCount; i++) {
-                const name = document.getElementById(`v_fullname_${i}`)?.value.trim();
-                const gender = document.getElementById(`v_gender_${i}`)?.value;
-
-                if (name !== "") {
-                    if (gender === "ชาย") males++;
-                    if (gender === "หญิง") females++;
-                }
+                const pfx = document.getElementById(`prefix-${i}`)?.value;
+                if (pfx === "นาย") male++;
+                else if (pfx === "นาง" || pfx === "นางสาว") female++;
             }
 
-            document.getElementById('countMale').textContent = males;
-            document.getElementById('countFemale').textContent = females;
+            document.getElementById('countMale').innerText = male;
+            document.getElementById('countFemale').innerText = female;
 
-            const total = males + females;
             const badge = document.getElementById('genderRatioBadge');
-
+            const total = male + female;
             if (total === 0) {
-                badge.className = "text-xs px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 font-semibold";
-                badge.textContent = "รอกรอกข้อมูล";
+                badge.className = "text-xs px-2.5 py-1 rounded-lg bg-blue-50 text-blue-800 font-semibold border border-blue-200";
+                badge.innerText = "รอกรอกข้อมูล";
+            } else if (Math.abs(male - female) <= 1 || (male >= 2 && female >= 2)) {
+                badge.className = "text-xs px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800 font-semibold border border-emerald-200";
+                badge.innerText = "สัดส่วนสมดุลดีเยี่ยม";
             } else {
-                const diff = Math.abs(males - females);
-                if (diff <= 1) {
-                    badge.className = "text-xs px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-800 font-semibold flex items-center gap-1 border border-emerald-200";
-                    badge.innerHTML = `<i class="fa-solid fa-circle-check"></i> สัดส่วนชาย-หญิง สมดุลดี`;
-                } else {
-                    badge.className = "text-xs px-2.5 py-1 rounded-lg bg-amber-100 text-amber-800 font-semibold flex items-center gap-1 border border-amber-200";
-                    badge.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> แนะนำปรับให้ชาย-หญิงใกล้เคียงกัน`;
-                }
+                badge.className = "text-xs px-2.5 py-1 rounded-lg bg-amber-50 text-amber-800 font-semibold border border-amber-200";
+                badge.innerText = "ควรเกลี่ยสัดส่วนเพศ";
             }
         }
 
-        function formatThaiIdCard(input) {
-            let value = input.value.replace(/\D/g, '');
-            if (value.length > 13) value = value.substring(0, 13);
-            
-            let formatted = '';
-            if (value.length > 0) formatted += value.substring(0, 1);
-            if (value.length > 1) formatted += '-' + value.substring(1, 5);
-            if (value.length > 5) formatted += '-' + value.substring(5, 10);
-            if (value.length > 10) formatted += '-' + value.substring(10, 12);
-            if (value.length > 12) formatted += '-' + value.substring(12, 13);
-            input.value = formatted;
+        function validateIdCard(input) {
+            input.value = input.value.replace(/\D/g, '');
         }
 
-        function formatPhone(input) {
-            let value = input.value.replace(/\D/g, '');
-            if (value.length > 10) value = value.substring(0, 10);
-            
-            let formatted = '';
-            if (value.length > 0) formatted += value.substring(0, 3);
-            if (value.length > 3) formatted += '-' + value.substring(3, 6);
-            if (value.length > 6) formatted += '-' + value.substring(6, 10);
-            input.value = formatted;
+        function validatePhone(input) {
+            input.value = input.value.replace(/\D/g, '');
         }
 
         async function handleFormSubmit(event) {
             event.preventDefault();
 
-            const tambonVal = document.getElementById('tambonSelect').value;
-            const villageVal = document.getElementById('villageSelect').value;
+            const tambon = document.getElementById('tambonSelect').value;
+            const villageName = document.getElementById('villageSelect').value;
 
-            if (!tambonVal || !villageVal) {
-                showToast('กรุณาเลือกตำบลและหมู่บ้านให้ครบถ้วน', 'error');
+            if (!tambon || !villageName) {
+                showCustomModal("กรุณาเลือกตำบลและหมู่บ้านให้ครบถ้วน", "แจ้งเตือนการกรอกข้อมูล", "error");
                 return;
             }
 
-            const villageObj = JSON.parse(villageVal);
-
-            const volunteers = [];
+            let volunteers = [];
             for (let i = 1; i <= activePersonsCount; i++) {
-                volunteers.push({
-                    personNo: i,
-                    prefix: document.getElementById(`v_prefix_${i}`).value,
-                    fullname: document.getElementById(`v_fullname_${i}`).value.trim(),
-                    gender: document.getElementById(`v_gender_${i}`).value,
-                    idCard: document.getElementById(`v_idCard_${i}`).value.trim(),
-                    houseNo: document.getElementById(`v_houseNo_${i}`).value.trim(),
-                    occupation: document.getElementById(`v_occupation_${i}`).value.trim(),
-                    phone: document.getElementById(`v_phone_${i}`).value.trim()
-                });
+                const prefix = document.getElementById(`prefix-${i}`).value;
+                const fullname = document.getElementById(`fullname-${i}`).value.trim();
+                const idcard = document.getElementById(`idcard-${i}`).value.trim();
+                const housejob = document.getElementById(`housejob-${i}`).value.trim();
+                const phone = document.getElementById(`phone-${i}`).value.trim();
+
+                if (i <= 4 && (!prefix || !fullname || !idcard || !housejob || !phone)) {
+                    showCustomModal(`กรุณากรอกข้อมูลของ อช. คนที่ ${i} ให้ครบถ้วนสมบูรณ์`, "ข้อมูลไม่ครบถ้วน", "error");
+                    return;
+                }
+
+                if (fullname) {
+                    volunteers.push({ prefix, fullname, idcard, housejob, phone });
+                }
             }
 
-            const now = new Date();
-            const dateStr = now.toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+            if (volunteers.length < 4) {
+                showCustomModal("ต้องมีรายชื่อ อช. อย่างน้อย 4 คนต่อหมู่บ้านตามระเบียบ", "จำนวน อช. ไม่ครบถ้วน", "error");
+                return;
+            }
 
-            const reportData = {
-                id: `${tambonVal}_Moo${villageObj.moo}`,
-                tambon: tambonVal,
-                moo: villageObj.moo,
-                villageName: villageObj.name,
-                volunteersCount: volunteers.length,
-                malesCount: volunteers.filter(v => v.gender === 'ชาย').length,
-                femalesCount: volunteers.filter(v => v.gender === 'หญิง').length,
-                volunteers: volunteers,
-                updatedAt: dateStr
+            // Count male/female
+            let maleCount = 0;
+            let femaleCount = 0;
+            volunteers.forEach(v => {
+                if (v.prefix === "นาย") maleCount++;
+                else femaleCount++;
+            });
+
+            const timestamp = new Date().toLocaleString('th-TH', { dateStyle: 'short', timeStyle: 'medium' });
+
+            const reportObj = {
+                tambon,
+                villageName,
+                volunteers,
+                volunteersSummary: volunteers.map(v => `${v.prefix}${v.fullname} (${v.housejob})`).join('; '),
+                maleCount,
+                femaleCount,
+                timestamp
             };
 
-            const idx = submittedReports.findIndex(r => r.tambon === tambonVal && r.moo === villageObj.moo);
-            if (idx >= 0) {
-                submittedReports[idx] = reportData;
-            } else {
-                submittedReports.push(reportData);
+            // Save locally
+            reportsData[villageName] = reportObj;
+            localStorage.setItem('huairat_cdd_reports_v2', JSON.stringify(reportsData));
+
+            // Sync with Google Sheets Web App
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> กำลังส่งข้อมูลไปยัง Google Sheets...`;
+
+            try {
+                await fetch(webappUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(reportObj)
+                });
+            } catch (err) {
+                console.log("Cloud sync note: ", err);
             }
 
-            saveToLocalStorage();
-            updateDashboard();
-            renderRecordsTable();
-            renderPrintSelectOptions();
-
-            if (currentScriptUrl) {
-                try {
-                    await fetch(currentScriptUrl, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(reportData)
-                    });
-                    showToast(`บันทึกและส่งข้อมูลลง Google Sheets สำเร็จ!`, 'success');
-                } catch (err) {
-                    console.error("Cloud save error", err);
-                    showToast(`บันทึกในระบบสำเร็จ (ขัดข้องในการส่งลง Google Sheets)`, 'info');
-                }
-            } else {
-                showToast(`บันทึกรายงาน หมู่ที่ ${villageObj.moo} บ้าน${villageObj.name} เรียบร้อยแล้ว!`, 'success');
-            }
-
-            document.getElementById('selectPrintVillage').value = reportData.id;
-            renderPrintPreview();
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fa-solid fa-floppy-disk"></i> บันทึกรายงาน`;
+                showCustomModal(`บันทึกข้อมูลของ ${villageName} และส่งไปยัง Google Sheets สำเร็จเรียบร้อยแล้ว`, "บันทึกสำเร็จ", "success");
+                updateDashboardCounters();
+                updateVillageStatusNotice(reportObj, villageName);
+            }, 800);
         }
 
-        function loadExistingIntoForm(tambon, moo) {
-            const report = submittedReports.find(r => r.tambon === tambon && r.moo === moo);
-            if (!report) return;
+        let dashStatusFilter = 'all';
 
-            document.getElementById('tambonSelect').value = report.tambon;
-            handleTambonChange();
-
-            const villageSelect = document.getElementById('villageSelect');
-            for (let i = 0; i < villageSelect.options.length; i++) {
-                const optVal = villageSelect.options[i].value;
-                if (optVal) {
-                    const parsed = JSON.parse(optVal);
-                    if (parsed.moo === report.moo) {
-                        villageSelect.selectedIndex = i;
-                        break;
-                    }
-                }
-            }
-
-            handleVillageChange();
-
-            const count = report.volunteers.length;
-            if (count > 4) {
-                toggleOptionalPerson(count, true);
-            } else {
-                toggleOptionalPerson(5, false);
-            }
-
-            report.volunteers.forEach((v, idx) => {
-                const i = idx + 1;
-                if (i <= 6) {
-                    document.getElementById(`v_prefix_${i}`).value = v.prefix;
-                    document.getElementById(`v_fullname_${i}`).value = v.fullname;
-                    document.getElementById(`v_gender_${i}`).value = v.gender;
-                    document.getElementById(`v_idCard_${i}`).value = v.idCard;
-                    document.getElementById(`v_houseNo_${i}`).value = v.houseNo;
-                    document.getElementById(`v_occupation_${i}`).value = v.occupation;
-                    document.getElementById(`v_phone_${i}`).value = v.phone;
+        function setDashFilterStatus(status) {
+            dashStatusFilter = status;
+            ['all', 'reported', 'pending'].forEach(s => {
+                const btn = document.getElementById(`filterStatus-${s}`);
+                if (s === status) {
+                    btn.className = "px-3 py-1.5 text-xs font-bold rounded-lg bg-blue-600 text-white transition-all";
+                } else {
+                    btn.className = "px-3 py-1.5 text-xs font-bold rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all";
                 }
             });
-
-            updateGenderCount();
-            switchTab('formTab');
-            showToast(`โหลดข้อมูล หมู่ที่ ${report.moo} บ้าน${report.villageName} ลงแบบฟอร์มเรียบร้อย`, 'success');
+            renderDashboard();
         }
 
-        function showResetConfirmationModal() {
-            document.getElementById('resetConfirmModal').classList.remove('hidden');
-        }
+        function renderDashboard() {
+            const grid = document.getElementById('villagesGrid');
+            const selectedTambon = document.getElementById('dashTambonFilter').value;
+            grid.innerHTML = '';
 
-        function closeResetConfirmationModal() {
-            document.getElementById('resetConfirmModal').classList.add('hidden');
-        }
-
-        function confirmResetForm() {
-            document.getElementById('reportForm').reset();
-            document.getElementById('villageSelect').disabled = true;
-            document.getElementById('villageSelect').innerHTML = '<option value="">-- โปรดเลือกตำบลก่อน --</option>';
-            hideVillageNotice();
-            activePersonsCount = 4;
-            renderVolunteerFormCards();
-            closeResetConfirmationModal();
-            showToast("ล้างข้อมูลในฟอร์มเรียบร้อยแล้ว", "info");
-        }
-
-        function updateDashboard() {
-            const totalVillages = 80;
-            const reportedSet = new Set(submittedReports.map(r => `${r.tambon}_${r.moo}`));
-            const reportedCount = reportedSet.size;
-            const pendingCount = Math.max(0, totalVillages - reportedCount);
-
+            let totalVillagesCount = 0;
+            let reportedCount = 0;
             let totalVolunteersCount = 0;
-            submittedReports.forEach(r => {
-                totalVolunteersCount += r.volunteersCount;
+
+            tambonsData.forEach(t => {
+                if (selectedTambon && t.name !== selectedTambon) return;
+
+                t.villages.forEach(v => {
+                    totalVillagesCount++;
+                    const rep = reportsData[v];
+                    if (rep) {
+                        reportedCount++;
+                        totalVolunteersCount += rep.volunteers.length;
+                    }
+
+                    if (dashStatusFilter === 'reported' && !rep) return;
+                    if (dashStatusFilter === 'pending' && rep) return;
+
+                    const card = document.createElement('div');
+                    card.className = `p-4 rounded-xl border transition-all cursor-pointer flex flex-col justify-between gap-3 ${rep ? 'bg-emerald-50/60 border-emerald-200 hover:border-emerald-300' : 'bg-white border-slate-200 hover:border-blue-300'}`;
+                    card.onclick = () => {
+                        document.getElementById('tambonSelect').value = t.name;
+                        handleTambonChange();
+                        document.getElementById('villageSelect').value = v;
+                        handleVillageChange();
+                        switchTab('formTab');
+                    };
+
+                    card.innerHTML = `
+                        <div>
+                            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-1">
+                                <span>${t.name}</span>
+                                <span class="px-2 py-0.5 rounded-md text-[10px] ${rep ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600'}">
+                                    ${rep ? 'รายงานแล้ว' : 'รอดำเนินการ'}
+                                </span>
+                            </div>
+                            <h4 class="font-bold text-slate-800 text-sm font-prompt">${v}</h4>
+                        </div>
+                        <div class="pt-2 border-t border-slate-100 text-xs text-slate-600 flex items-center justify-between">
+                            <span>อช. ${rep ? rep.volunteers.length + ' คน' : '0 คน'}</span>
+                            <span class="text-blue-600 font-semibold flex items-center gap-1">
+                                ${rep ? 'แก้ไขข้อมูล' : 'กรอกข้อมูล'} <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </span>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
             });
 
-            document.getElementById('completedBadge').textContent = `${reportedCount}/80`;
+            document.getElementById('dashTotalVillagesBadge').innerHTML = `${totalVillagesCount} <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span>`;
             document.getElementById('dashReportedCount').innerHTML = `${reportedCount} <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span>`;
-            document.getElementById('dashPendingCount').innerHTML = `${pendingCount} <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span>`;
+            document.getElementById('dashPendingCount').innerHTML = `${totalVillagesCount - reportedCount} <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span>`;
             document.getElementById('dashTotalVolunteers').innerHTML = `${totalVolunteersCount} <span class="text-xs font-normal text-slate-500">คน</span>`;
-
-            const percent = Math.round((reportedCount / totalVillages) * 100);
-            document.getElementById('dashProgressPercent').textContent = `${percent}%`;
-            document.getElementById('dashProgressBar').style.width = `${percent}%`;
-
-            renderTambonAccordion();
+            document.getElementById('completedBadge').innerText = `${reportedCount}/${totalVillagesCount}`;
         }
 
-        function renderTambonAccordion() {
-            const container = document.getElementById('tambonAccordionContainer');
-            container.innerHTML = '';
-
-            huaiRachData.forEach(tObj => {
-                const tTambon = tObj.tambon;
-                const reportedInTambon = submittedReports.filter(r => r.tambon === tTambon).length;
-                const totalInTambon = tObj.villages.length;
-
-                const item = document.createElement('div');
-                item.className = 'border border-slate-200 rounded-2xl overflow-hidden shadow-sm bg-slate-50';
-
-                item.innerHTML = `
-                    <div onclick="toggleAccordion('acc_${tTambon}')" class="p-4 sm:p-5 flex items-center justify-between cursor-pointer hover:bg-slate-100 transition-all select-none">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">
-                                ${reportedInTambon}/${totalInTambon}
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 text-sm sm:text-base font-prompt">ตำบล${tTambon}</h4>
-                                <p class="text-xs text-slate-500">รายงานแล้ว ${reportedInTambon} จาก ${totalInTambon} หมู่บ้าน</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-24 sm:w-32 bg-slate-200 rounded-full h-2.5 overflow-hidden">
-                                <div class="bg-emerald-500 h-2.5 rounded-full" style="width: ${(reportedInTambon/totalInTambon)*100}%"></div>
-                            </div>
-                            <i id="icon_acc_${tTambon}" class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform"></i>
-                        </div>
-                    </div>
-
-                    <div id="acc_${tTambon}" class="hidden p-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 bg-white border-t border-slate-200">
-                        ${tObj.villages.map(v => {
-                            const isDone = submittedReports.some(r => r.tambon === tTambon && r.moo === v.moo);
-                            return `
-                                <button type="button" onclick="selectVillageFromDashboard('${tTambon}', '${v.moo}')" class="p-2.5 rounded-xl border text-left transition-all ${isDone ? 'bg-emerald-50 border-emerald-300 text-emerald-950 hover:bg-emerald-100' : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-blue-50 hover:border-blue-300'}">
-                                    <div class="flex items-center justify-between text-xs font-bold mb-1">
-                                        <span>หมู่ ${v.moo}</span>
-                                        <i class="${isDone ? 'fa-solid fa-circle-check text-emerald-600' : 'fa-regular fa-circle text-slate-300'}"></i>
-                                    </div>
-                                    <div class="text-xs font-medium truncate">บ้าน${v.name}</div>
-                                </button>
-                            `;
-                        }).join('')}
-                    </div>
-                `;
-
-                container.appendChild(item);
-            });
+        function updateDashboardCounters() {
+            renderDashboard();
         }
 
-        function toggleAccordion(id) {
-            const el = document.getElementById(id);
-            const icon = document.getElementById(`icon_${id}`);
-            if (el.classList.contains('hidden')) {
-                el.classList.remove('hidden');
-                icon.classList.add('rotate-180');
-            } else {
-                el.classList.add('hidden');
-                icon.classList.remove('rotate-180');
-            }
-        }
-
-        function selectVillageFromDashboard(tambon, moo) {
-            switchTab('formTab');
-            document.getElementById('tambonSelect').value = tambon;
-            handleTambonChange();
-
-            const villageObj = huaiRachData.find(t => t.tambon === tambon).villages.find(v => v.moo === moo);
-            document.getElementById('villageSelect').value = JSON.stringify({ moo: villageObj.moo, name: villageObj.name });
-            handleVillageChange();
-
-            const existing = submittedReports.find(r => r.tambon === tambon && r.moo === moo);
-            if (existing) {
-                loadExistingIntoForm(tambon, moo);
-            }
-        }
-
-        function renderRecordsTable() {
-            const tbody = document.getElementById('recordsTableBody');
+        function renderReportList() {
+            const tbody = document.getElementById('reportTableBody');
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const tambonFilter = document.getElementById('listTambonFilter').value;
             tbody.innerHTML = '';
 
-            if (submittedReports.length === 0) {
-                tbody.innerHTML = `
-                    <tr>
-                        <td colspan="6" class="text-center py-10 text-slate-400">
-                            <i class="fa-solid fa-folder-open text-3xl mb-2 block text-slate-300"></i>
-                            ยังไม่มีข้อมูลรายงานในระบบ
-                        </td>
-                    </tr>
-                `;
-                return;
-            }
+            let index = 1;
+            let hasData = false;
 
-            submittedReports.forEach((r, idx) => {
+            Object.keys(reportsData).forEach(villageName => {
+                const rep = reportsData[villageName];
+                if (tambonFilter && rep.tambon !== tambonFilter) return;
+
+                const searchTarget = `${rep.tambon} ${rep.villageName} ${rep.volunteersSummary}`.toLowerCase();
+                if (search && !searchTarget.includes(search)) return;
+
+                hasData = true;
                 const tr = document.createElement('tr');
-                tr.className = "hover:bg-blue-50/40 transition-all";
+                tr.className = "hover:bg-slate-50/80 transition-colors border-b border-slate-100";
+
+                let volunteersHtml = rep.volunteers.map((v, idx) => `
+                    <div class="py-0.5 text-xs text-slate-700">
+                        <span class="font-semibold text-slate-900">${idx + 1}. ${v.prefix}${v.fullname}</span> 
+                        <span class="text-slate-500">(${v.housejob})</span>
+                    </div>
+                `).join('');
 
                 tr.innerHTML = `
-                    <td class="px-4 py-3 font-semibold text-slate-900">${idx + 1}</td>
-                    <td class="px-4 py-3 font-semibold">ตำบล${r.tambon}</td>
-                    <td class="px-4 py-3 font-bold text-slate-800">หมู่ที่ ${r.moo} บ้าน${r.villageName}</td>
-                    <td class="px-4 py-3">
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-50 text-blue-900 text-xs font-semibold border border-blue-200">
-                            ${r.volunteersCount} คน (ชาย ${r.malesCount} / หญิง ${r.femalesCount})
+                    <td class="p-3 text-center font-bold text-slate-500">${index++}</td>
+                    <td class="p-3">
+                        <div class="font-bold text-slate-900 font-prompt">${rep.villageName}</div>
+                        <div class="text-[11px] text-slate-500">${rep.tambon}</div>
+                    </td>
+                    <td class="p-3">
+                        <div class="space-y-0.5">${volunteersHtml}</div>
+                    </td>
+                    <td class="p-3 text-center">
+                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 font-semibold text-[11px]">
+                            <i class="fa-solid fa-mars"></i> ${rep.maleCount} | <i class="fa-solid fa-venus"></i> ${rep.femaleCount}
                         </span>
                     </td>
-                    <td class="px-4 py-3 text-xs text-slate-500">${r.updatedAt}</td>
-                    <td class="px-4 py-3 text-center">
-                        <div class="flex items-center justify-center gap-2">
-                            <button onclick="previewSpecificVillage('${r.id}')" title="พิมพ์ใบรายงาน A4" class="p-1.5 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded-lg transition-all text-xs">
-                                <i class="fa-solid fa-print"></i>
+                    <td class="p-3 text-center text-xs text-slate-500">${rep.timestamp || '-'}</td>
+                    <td class="p-3 text-center">
+                        <div class="flex items-center justify-center gap-1.5">
+                            <button onclick="editReport('${rep.villageName}')" title="แก้ไข" class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 flex items-center justify-center transition-all">
+                                <i class="fa-solid fa-pen-to-square"></i>
                             </button>
-                            <button onclick="selectVillageFromDashboard('${r.tambon}', '${r.moo}')" title="แก้ไข" class="p-1.5 bg-indigo-100 hover:bg-indigo-200 text-indigo-800 rounded-lg transition-all text-xs">
-                                <i class="fa-solid fa-pen"></i>
-                            </button>
-                            <button onclick="deleteRecord('${r.id}')" title="ลบ" class="p-1.5 bg-rose-100 hover:bg-rose-200 text-rose-700 rounded-lg transition-all text-xs">
+                            <button onclick="deleteReport('${rep.villageName}')" title="ลบ" class="w-8 h-8 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 flex items-center justify-center transition-all">
                                 <i class="fa-solid fa-trash-can"></i>
                             </button>
                         </div>
                     </td>
                 `;
+                tbody.appendChild(tr);
+            });
 
+            if (!hasData) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="p-8 text-center text-slate-400">
+                            <i class="fa-solid fa-folder-open text-3xl mb-2"></i>
+                            <p class="text-sm">ยังไม่มีข้อมูลรายงานในระบบ</p>
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        function editReport(villageName) {
+            const rep = reportsData[villageName];
+            if (!rep) return;
+            document.getElementById('tambonSelect').value = rep.tambon;
+            handleTambonChange();
+            document.getElementById('villageSelect').value = villageName;
+            handleVillageChange();
+            switchTab('formTab');
+        }
+
+        function deleteReport(villageName) {
+            if (confirm(`คุณต้องการลบข้อมูลรายงานของ ${villageName} ใช่หรือไม่?`)) {
+                delete reportsData[villageName];
+                localStorage.setItem('huairat_cdd_reports_v2', JSON.stringify(reportsData));
+                renderReportList();
+                renderDashboard();
+                renderPrintPreview();
+                showCustomModal(`ลบข้อมูลรายงานของ ${villageName} เรียบร้อยแล้ว`, "ลบข้อมูลสำเร็จ", "success");
+            }
+        }
+
+        function renderPrintPreview() {
+            const tambonName = document.getElementById('printTambonSelect').value || tambonsData[0].name;
+            document.getElementById('printTambonTitle').innerText = `ประจำตำบล${tambonName}`;
+            document.getElementById('printTambonSubtitle').innerText = `ตำบล${tambonName}`;
+
+            const tbody = document.getElementById('printTableBody');
+            tbody.innerHTML = '';
+
+            const tambonObj = tambonsData.find(t => t.name === tambonName);
+            if (!tambonObj) return;
+
+            let index = 1;
+            tambonObj.villages.forEach(vName => {
+                const rep = reportsData[vName];
+                const tr = document.createElement('tr');
+                tr.className = "text-sm";
+
+                let volunteersStr = "- (ยังไม่ได้รายงาน)";
+                let genderStr = "-";
+
+                if (rep && rep.volunteers) {
+                    volunteersStr = rep.volunteers.map((v, i) => `${i + 1}. ${v.prefix}${v.fullname} [${v.housejob}] (${v.phone})`).join('<br>');
+                    genderStr = `ชาย ${rep.maleCount} คน<br>หญิง ${rep.femaleCount} คน`;
+                }
+
+                tr.innerHTML = `
+                    <td class="border border-slate-800 p-2 text-center align-top font-bold">${index++}</td>
+                    <td class="border border-slate-800 p-2 align-top font-bold">${vName}</td>
+                    <td class="border border-slate-800 p-2 align-top">${volunteersStr}</td>
+                    <td class="border border-slate-800 p-2 text-center align-top text-xs">${genderStr}</td>
+                `;
                 tbody.appendChild(tr);
             });
         }
 
-        function filterTable() {
-            const keyword = document.getElementById('searchKeyword').value.toLowerCase();
-            const filterTambon = document.getElementById('filterTambon').value;
-            const rows = document.querySelectorAll('#recordsTableBody tr');
-
-            submittedReports.forEach((r, idx) => {
-                const row = rows[idx];
-                if (!row) return;
-
-                const matchesTambon = filterTambon === "" || r.tambon === filterTambon;
-                const matchVolunteers = r.volunteers.some(v => v.fullname.toLowerCase().includes(keyword));
-                const matchVillage = r.villageName.toLowerCase().includes(keyword) || r.moo.includes(keyword) || r.tambon.toLowerCase().includes(keyword);
-
-                if (matchesTambon && (keyword === "" || matchVillage || matchVolunteers)) {
-                    row.classList.remove('hidden');
-                } else {
-                    row.classList.add('hidden');
-                }
-            });
-        }
-
-        function deleteRecord(id) {
-            if (confirm("คุณต้องการลบข้อมูลรายงานของหมู่บ้านนี้ใช่หรือไม่?")) {
-                submittedReports = submittedReports.filter(r => r.id !== id);
-                saveToLocalStorage();
-                updateDashboard();
-                renderRecordsTable();
-                renderPrintSelectOptions();
-                showToast("ลบรายการเรียบร้อยแล้ว", "info");
-            }
-        }
-
-        function renderPrintSelectOptions() {
-            const select = document.getElementById('selectPrintVillage');
-            select.innerHTML = '<option value="">-- เลือกหมู่บ้านที่จะพิมพ์ --</option>';
-
-            submittedReports.forEach(r => {
-                const opt = document.createElement('option');
-                opt.value = r.id;
-                opt.textContent = `ตำบล${r.tambon} - หมู่ที่ ${r.moo} บ้าน${r.villageName}`;
-                select.appendChild(opt);
-            });
-
-            if (submittedReports.length > 0 && !select.value) {
-                select.value = submittedReports[0].id;
-                renderPrintPreview();
-            }
-        }
-
-        function previewSpecificVillage(id) {
-            switchTab('printTab');
-            document.getElementById('selectPrintVillage').value = id;
-            renderPrintPreview();
-        }
-
-        function renderPrintPreview() {
-            const id = document.getElementById('selectPrintVillage').value;
-            const report = submittedReports.find(r => r.id === id);
-
-            const pTambon = document.getElementById('pTambon');
-            const pMoo = document.getElementById('pMoo');
-            const pVillage = document.getElementById('pVillage');
-            const container = document.getElementById('pVolunteersList');
-
-            if (!report) {
-                pTambon.textContent = "........................";
-                pMoo.textContent = "........";
-                pVillage.textContent = "........................";
-                container.innerHTML = `<div class="col-span-2 text-center py-12 text-slate-400">กรุณาเลือกหมู่บ้านที่มีข้อมูลรายงาน</div>`;
-                return;
-            }
-
-            pTambon.textContent = report.tambon;
-            pMoo.textContent = report.moo;
-            pVillage.textContent = report.villageName;
-
-            container.innerHTML = '';
-
-            const numberTh = ['๑', '๒', '๓', '๔', '๕', '๖'];
-
-            report.volunteers.forEach((v, idx) => {
-                const item = document.createElement('div');
-                item.className = 'border border-slate-400 p-4 rounded-lg text-sm space-y-1 bg-white shadow-sm';
-
-                item.innerHTML = `
-                    <div class="font-bold border-b border-slate-300 pb-1 mb-2 text-base text-slate-900 flex justify-between">
-                        <span>คนที่ ${numberTh[idx]}</span>
-                        <span class="text-xs font-normal text-slate-500">เพศ ${v.gender}</span>
-                    </div>
-                    <div><span class="font-bold">๑. ชื่อ-สกุล:</span> ${v.prefix}${v.fullname}</div>
-                    <div><span class="font-bold">๒. เลขประจำตัวประชาชน:</span> ${v.idCard}</div>
-                    <div><span class="font-bold">๓. บ้านเลขที่:</span> ${v.houseNo} <span class="ml-2 font-bold">ประกอบอาชีพ:</span> ${v.occupation}</div>
-                    <div><span class="font-bold">๔. หมายเลขโทรศัพท์:</span> ${v.phone}</div>
-                `;
-
-                container.appendChild(item);
-            });
-        }
-
         function exportToExcel() {
-            if (submittedReports.length === 0) {
-                showToast("ไม่มีข้อมูลสำหรับส่งออก", "error");
+            let exportData = [];
+            Object.keys(reportsData).forEach((vName, idx) => {
+                const rep = reportsData[vName];
+                rep.volunteers.forEach((v, pIdx) => {
+                    exportData.push({
+                        "ลำดับ": idx + 1,
+                        "ตำบล": rep.tambon,
+                        "หมู่บ้าน": rep.villageName,
+                        "คนที่": pIdx + 1,
+                        "คำนำหน้า": v.prefix,
+                        "ชื่อ-นามสกุล": v.fullname,
+                        "เลขบัตรประชาชน": v.idcard,
+                        "บ้านเลขที่/ประกอบอาชีพ": v.housejob,
+                        "เบอร์โทรศัพท์": v.phone,
+                        "วันที่บันทึก": rep.timestamp
+                    });
+                });
+            });
+
+            if (exportData.length === 0) {
+                showCustomModal("ยังไม่มีข้อมูลสำหรับส่งออก Excel", "แจ้งเตือน", "error");
                 return;
             }
-
-            const exportData = [];
-
-            submittedReports.forEach(r => {
-                const row = {
-                    "ตำบล": r.tambon,
-                    "หมู่ที่": r.moo,
-                    "ชื่อหมู่บ้าน": r.villageName,
-                    "จำนวน อช.": r.volunteersCount,
-                    "จำนวน ชาย": r.malesCount,
-                    "จำนวน หญิง": r.femalesCount,
-                    "วันที่บันทึกล่าสุด": r.updatedAt
-                };
-
-                for (let i = 0; i < 6; i++) {
-                    const v = r.volunteers[i];
-                    const num = i + 1;
-                    if (v) {
-                        row[`คนที่ ${num} ชื่อ-สกุล`] = `${v.prefix}${v.fullname}`;
-                        row[`คนที่ ${num} เพศ`] = v.gender;
-                        row[`คนที่ ${num} เลขบัตรประชาชน`] = v.idCard;
-                        row[`คนที่ ${num} บ้านเลขที่`] = v.houseNo;
-                        row[`คนที่ ${num} อาชีพ`] = v.occupation;
-                        row[`คนที่ ${num} เบอร์โทรศัพท์`] = v.phone;
-                    } else {
-                        row[`คนที่ ${num} ชื่อ-สกุล`] = "";
-                        row[`คนที่ ${num} เพศ`] = "";
-                        row[`คนที่ ${num} เลขบัตรประชาชน`] = "";
-                        row[`คนที่ ${num} บ้านเลขที่`] = "";
-                        row[`คนที่ ${num} อาชีพ`] = "";
-                        row[`คนที่ ${num} เบอร์โทรศัพท์`] = "";
-                    }
-                }
-
-                exportData.push(row);
-            });
 
             const worksheet = XLSX.utils.json_to_sheet(exportData);
             const workbook = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(workbook, worksheet, "รายงาน_อช_อำเภอห้วยราช");
-
-            XLSX.writeFile(workbook, `รายงาน_อช_อำเภอห้วยราช_${new Date().toISOString().slice(0,10)}.xlsx`);
-            showToast("ส่งออกไฟล์ Excel เรียบร้อยแล้ว", "success");
-        }
-
-        function exportToCSV() {
-            if (submittedReports.length === 0) {
-                showToast("ไม่มีข้อมูลสำหรับส่งออก", "error");
-                return;
-            }
-
-            let csvContent = "\uFEFF";
-            csvContent += "ตำบล,หมู่ที่,ชื่อหมู่บ้าน,จำนวน อช.,คน1_ชื่อ,คน1_เลขบัตร,คน1_โทร,คน2_ชื่อ,คน2_เลขบัตร,คน2_โทร,คน3_ชื่อ,คน3_เลขบัตร,คน3_โทร,คน4_ชื่อ,คน4_เลขบัตร,คน4_โทร\n";
-
-            submittedReports.forEach(r => {
-                let line = `"${r.tambon}","${r.moo}","${r.villageName}","${r.volunteersCount}"`;
-                for (let i = 0; i < 4; i++) {
-                    const v = r.volunteers[i];
-                    if (v) {
-                        line += `,"${v.prefix}${v.fullname}","${v.idCard}","${v.phone}"`;
-                    } else {
-                        line += `,"","",""`;
-                    }
-                }
-                csvContent += line + "\n";
-            });
-
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement("a");
-            link.href = URL.createObjectURL(blob);
-            link.setAttribute("download", `รายงาน_อช_อำเภอห้วยราช.csv`);
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            showToast("ส่งออกไฟล์ CSV เรียบร้อยแล้ว", "success");
-        }
-
-        function copyGasCode() {
-            const codeText = document.getElementById('gasCodeBlock').innerText;
-            const tempInput = document.createElement("textarea");
-            tempInput.value = codeText;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
-            showToast("คัดลอกโค้ด Google Apps Script เรียบร้อยแล้ว", "success");
+            XLSX.utils.book_append_sheet(workbook, worksheet, "รายงาน อช. อำเภอห้วยราช");
+            XLSX.writeFile(workbook, "รายงานผลการคัดเลือกอช_อำเภอห้วยราช.xlsx");
         }
 
         function openShareModal() {
-            const modal = document.getElementById('shareModal');
-            const input = document.getElementById('publicShareUrlInput');
-            if (input) {
-                input.value = currentPublicShareUrl || (window.location.href.includes('googleusercontent') || window.location.href.includes('blob:') ? '' : window.location.href);
-            }
-            if (modal) modal.classList.remove('hidden');
+            document.getElementById('shareModal').classList.remove('hidden');
         }
-
         function closeShareModal() {
-            const modal = document.getElementById('shareModal');
-            if (modal) modal.classList.add('hidden');
+            document.getElementById('shareModal').classList.add('hidden');
+            document.getElementById('copySuccessMsg').classList.add('hidden');
+        }
+        function copyShareUrl() {
+            const input = document.getElementById('shareUrlInput');
+            input.select();
+            document.execCommand('copy');
+            document.getElementById('copySuccessMsg').classList.remove('hidden');
+            setTimeout(() => document.getElementById('copySuccessMsg').classList.add('hidden'), 3000);
         }
 
-        function savePublicShareUrl() {
-            const input = document.getElementById('publicShareUrlInput');
-            if (!input) return;
-
-            const url = input.value.trim();
-            currentPublicShareUrl = url;
-            localStorage.setItem(PUBLIC_SHARE_URL_KEY, currentPublicShareUrl);
-            showToast("บันทึกลิงก์เว็บไซต์สำหรับส่งต่อเรียบร้อยแล้ว", "success");
+        function showResetConfirmationModal() {
+            document.getElementById('resetModal').classList.remove('hidden');
+        }
+        function closeResetModal() {
+            document.getElementById('resetModal').classList.add('hidden');
+        }
+        function confirmResetForm() {
+            closeResetModal();
+            document.getElementById('tambonSelect').value = "";
+            document.getElementById('villageSelect').innerHTML = '<option value="">-- โปรดเลือกตำบลก่อน --</option>';
+            document.getElementById('villageSelect').disabled = true;
+            clearVolunteerInputs();
+            updateVillageStatusNotice(null);
+            showCustomModal("ล้างข้อมูลฟอร์มเรียบร้อยแล้ว", "สำเร็จ", "success");
         }
 
-        function copyFormShareLink() {
-            let targetUrl = currentPublicShareUrl || window.location.href;
-
-            const tempInput = document.createElement("textarea");
-            tempInput.value = targetUrl;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
-
-            showToast("คัดลอกลิงก์ส่งต่อเรียบร้อยแล้ว! นำไปวางใน LINE หรือ Facebook ได้เลย", "success");
-            closeShareModal();
-        }
-
-        function switchTab(tabId) {
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(t => t.classList.add('hidden'));
-
-            const targetTab = document.getElementById(tabId);
-            if (targetTab) {
-                targetTab.classList.remove('hidden');
+        function showCustomModal(message, title = "แจ้งเตือน", type = "success") {
+            const modal = document.getElementById('customModal');
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalMessage').innerText = message;
+            
+            const iconContainer = document.getElementById('modalIconContainer');
+            const icon = document.getElementById('modalIcon');
+            
+            if (type === "success") {
+                iconContainer.className = "w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto text-2xl";
+                icon.className = "fa-solid fa-circle-check";
+            } else {
+                iconContainer.className = "w-16 h-16 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center mx-auto text-2xl";
+                icon.className = "fa-solid fa-triangle-exclamation";
             }
-
-            const btns = document.querySelectorAll('.tab-btn');
-            btns.forEach(b => {
-                b.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-500/20');
-                b.classList.add('text-slate-600', 'hover:text-blue-700', 'hover:bg-blue-50');
-            });
-
-            const activeBtn = document.getElementById(`btn-${tabId}`);
-            if (activeBtn) {
-                activeBtn.classList.remove('text-slate-600', 'hover:text-blue-700', 'hover:bg-blue-50');
-                activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-500/20');
-            }
+            modal.classList.remove('hidden');
+        }
+        function closeCustomModal() {
+            document.getElementById('customModal').classList.add('hidden');
         }
 
-        function showToast(message, type = 'info') {
-            const existing = document.getElementById('appToast');
-            if (existing) existing.remove();
-
-            const toast = document.createElement('div');
-            toast.id = 'appToast';
-
-            let bgClass = "bg-slate-900 text-white";
-            let icon = "fa-circle-info";
-
-            if (type === 'success') {
-                bgClass = "bg-emerald-600 text-white";
-                icon = "fa-circle-check";
-            } else if (type === 'error') {
-                bgClass = "bg-rose-600 text-white";
-                icon = "fa-circle-xmark";
-            } else if (type === 'info') {
-                bgClass = "bg-blue-600 text-white";
-                icon = "fa-circle-info";
+        function saveWebappUrl() {
+            const val = document.getElementById('customWebappUrl').value.trim();
+            if (val) {
+                webappUrl = val;
+                localStorage.setItem('huairat_cdd_webapp_url', webappUrl);
+                showCustomModal("บันทึก Google Apps Script Web App URL เรียบร้อยแล้ว", "สำเร็จ", "success");
             }
-
-            toast.className = `fixed bottom-5 right-5 z-50 ${bgClass} px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 text-sm font-medium transition-all transform translate-y-2 no-print`;
-            toast.innerHTML = `<i class="fa-solid ${icon} text-lg"></i> <span>${message}</span>`;
-
-            document.body.appendChild(toast);
-
-            setTimeout(() => {
-                toast.classList.remove('translate-y-2');
-            }, 50);
-
-            setTimeout(() => {
-                toast.classList.add('opacity-0', 'translate-y-2');
-                setTimeout(() => toast.remove(), 300);
-            }, 3500);
         }
     </script>
 </body>
