@@ -624,7 +624,7 @@ function doPost(e) {
                 villages: [
                     "บ้านเมืองโพธิ์ หมู่ที่ ๑", "บ้านปะคำ หมู่ที่ ๒", "บ้านพูนสุข หมู่ที่ ๓", 
                     "บ้านประดู่ หมู่ที่ ๔", "บ้านเมืองเหนือ หมู่ที่ ๕", "บ้านเมืองโพธิ์ หมู่ที่ ๖", 
-                    "บ้านศรีเจริญ หมู่ที่ ๗", "บ้านไผ่น้อย หมู่ที่ ๘", "บ้านจาน หมู่ที่ ๙"
+                    "บ้านศรีเจริญ หมู่ที่ ๗", "บ้านไผน้อย หมู่ที่ ๘", "บ้านจาน หมู่ที่ ๙"
                 ]
             },
             {
@@ -667,32 +667,30 @@ function doPost(e) {
         let webappUrl = localStorage.getItem('huairat_cdd_webapp_url') || 'https://script.google.com/macros/s/AKfycbxCha6DnT3Rpbkyjt0-P5_vh8HjLTcTZMA7FvdRPVsQ3Y68mjuB35C11izRm6gqi63uQA/exec';
         let activePersonsCount = 4; // Default 4 volunteers (up to 6)
 
-        window.onload = function() {
+        // Initialize App on Load
+        window.addEventListener('DOMContentLoaded', () => {
             initTambonDropdowns();
             renderVolunteersForm();
             renderDashboard();
             renderReportList();
             renderPrintPreview();
-            updateDashboardCounters();
-            
             document.getElementById('shareUrlInput').value = window.location.href;
-            document.getElementById('customWebappUrl').value = webappUrl;
-        };
+        });
 
         function switchTab(tabId) {
+            activeTab = tabId;
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-500/20');
-                btn.classList.add('text-slate-600', 'hover:text-blue-700', 'hover:bg-blue-50');
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-500/20');
+                el.classList.add('text-slate-600', 'hover:text-blue-700', 'hover:bg-blue-50');
             });
 
             document.getElementById(tabId).classList.remove('hidden');
-            const activeBtn = document.getElementById('btn-' + tabId);
+            const activeBtn = document.getElementById(`btn-${tabId}`);
             if (activeBtn) {
                 activeBtn.classList.remove('text-slate-600', 'hover:text-blue-700', 'hover:bg-blue-50');
                 activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-500/20');
             }
-            activeTab = tabId;
 
             if (tabId === 'dashboardTab') renderDashboard();
             if (tabId === 'listTab') renderReportList();
@@ -706,15 +704,15 @@ function doPost(e) {
             const printSelect = document.getElementById('printTambonSelect');
 
             tambonSelect.innerHTML = '<option value="">-- โปรดเลือกตำบล (๘ ตำบล) --</option>';
-            if(dashFilter) dashFilter.innerHTML = '<option value="">-- ทุกตำบล (๘ ตำบล) --</option>';
-            if(listFilter) listFilter.innerHTML = '<option value="">-- ทุกตำบล --</option>';
-            if(printSelect) printSelect.innerHTML = '';
+            dashFilter.innerHTML = '<option value="">-- ทุกตำบล (๘ ตำบล) --</option>';
+            listFilter.innerHTML = '<option value="">-- ทุกตำบล --</option>';
+            printSelect.innerHTML = '';
 
             tambonsData.forEach(t => {
                 tambonSelect.add(new Option(t.name, t.name));
-                if(dashFilter) dashFilter.add(new Option(t.name, t.name));
-                if(listFilter) listFilter.add(new Option(t.name, t.name));
-                if(printSelect) printSelect.add(new Option(t.name, t.name));
+                dashFilter.add(new Option(t.name, t.name));
+                listFilter.add(new Option(t.name, t.name));
+                printSelect.add(new Option(t.name, t.name));
             });
         }
 
@@ -722,18 +720,20 @@ function doPost(e) {
             const tambonName = document.getElementById('tambonSelect').value;
             const villageSelect = document.getElementById('villageSelect');
             villageSelect.innerHTML = '<option value="">-- โปรดเลือกหมู่บ้าน --</option>';
-            villageSelect.disabled = true;
 
-            if (!tambonName) return;
+            if (!tambonName) {
+                villageSelect.disabled = true;
+                updateVillageStatusNotice(null);
+                return;
+            }
 
-            const tambonObj = tambonsData.find(t => t.name === tambonName);
-            if (tambonObj) {
-                tambonObj.villages.forEach(v => {
+            villageSelect.disabled = false;
+            const found = tambonsData.find(t => t.name === tambonName);
+            if (found) {
+                found.villages.forEach(v => {
                     villageSelect.add(new Option(v, v));
                 });
-                villageSelect.disabled = false;
             }
-            clearVolunteerInputs();
             updateVillageStatusNotice(null);
         }
 
@@ -741,22 +741,22 @@ function doPost(e) {
             const villageName = document.getElementById('villageSelect').value;
             if (!villageName) {
                 updateVillageStatusNotice(null);
+                clearVolunteerInputs();
                 return;
             }
 
-            const existing = reportsData[villageName];
-            updateVillageStatusNotice(existing, villageName);
-            if (existing && existing.volunteers) {
-                fillVolunteerData(existing.volunteers);
+            const rep = reportsData[villageName];
+            if (rep) {
+                fillVolunteerData(rep.volunteers);
+                updateVillageStatusNotice(rep, villageName);
             } else {
                 clearVolunteerInputs();
+                updateVillageStatusNotice(null, villageName);
             }
         }
 
-        function updateVillageStatusNotice(report, villageName) {
+        function updateVillageStatusNotice(report, villageName = '') {
             const notice = document.getElementById('villageStatusNotice');
-            if (!notice) return;
-
             if (!villageName) {
                 notice.classList.add('hidden');
                 return;
@@ -768,7 +768,7 @@ function doPost(e) {
                 notice.innerHTML = `
                     <div class="flex items-center gap-2">
                         <i class="fa-solid fa-circle-check text-emerald-600 text-base"></i>
-                        <span>หมู่บ้านนี้ <strong>${villageName}</strong> มีการบันทึกรายงานแล้ว (${report.volunteers.length} คน) สามารถแก้ไขข้อมูลด้านล่างได้</span>
+                        <span>หมู่บ้าน <strong>${villageName}</strong> ได้บันทึกรายงานเรียบร้อยแล้ว (คุณสามารถแก้ไขข้อมูลด้านล่างนี้ได้ทันที)</span>
                     </div>
                     <span class="text-xs bg-emerald-200 text-emerald-800 font-bold px-2.5 py-1 rounded-lg">บันทึกเมื่อ: ${report.timestamp || '-'}</span>
                 `;
