@@ -166,7 +166,7 @@
                     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-6 transition-all hover:shadow-md">
                         <div class="flex items-center gap-3 border-b border-slate-100 pb-4 mb-5">
                             <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-lg shadow-sm shrink-0">
-                                1
+                                ๑
                             </div>
                             <div>
                                 <h2 class="text-base sm:text-lg font-bold text-slate-800 font-prompt">ข้อมูลสถานที่ (เลือกตำบล และ หมู่บ้าน)</h2>
@@ -187,7 +187,7 @@
                                     เลือกตำบล <span class="text-rose-500">*</span>
                                 </label>
                                 <select id="tambonSelect" required onchange="handleTambonChange()" class="w-full bg-white border border-slate-300 text-slate-900 rounded-xl px-3.5 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all font-medium shadow-sm">
-                                    <option value="">-- โปรดเลือกตำบล (8 ตำบล) --</option>
+                                    <option value="">-- โปรดเลือกตำบล (๘ ตำบล) --</option>
                                 </select>
                             </div>
 
@@ -213,11 +213,11 @@
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4 mb-5">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-lg shadow-sm shrink-0">
-                                    2
+                                    ๒
                                 </div>
                                 <div>
                                     <h2 class="text-base sm:text-lg font-bold text-slate-800 font-prompt">รายชื่ออาสาพัฒนาชุมชน (อช.)</h2>
-                                    <p class="text-xs text-slate-500">กรอกรายชื่อ 4 ถึง 6 คนต่อหมู่บ้าน พร้อมบ้านเลขที่ประกอบอาชีพและเบอร์โทรศัพท์ตามแบบฟอร์มทางการ</p>
+                                    <p class="text-xs text-slate-500">กรอกรายชื่อ ๔ ถึง ๖ คนต่อหมู่บ้าน พร้อมบ้านเลขที่ อาชีพ และเบอร์โทรศัพท์ตามแบบฟอร์มทางการ</p>
                                 </div>
                             </div>
 
@@ -226,11 +226,11 @@
                                 <span class="text-xs font-bold text-slate-600">สัดส่วนเพศปัจจุบัน:</span>
                                 <div class="flex items-center gap-2 text-xs sm:text-sm font-bold">
                                     <span class="text-blue-600 flex items-center gap-1">
-                                        <i class="fa-solid fa-mars"></i> ชาย <span id="countMale" class="bg-blue-100 text-blue-900 px-2 py-0.5 rounded-md text-xs">0</span>
+                                        <i class="fa-solid fa-mars"></i> ชาย <span id="countMale" class="bg-blue-100 text-blue-900 px-2 py-0.5 rounded-md text-xs">๐</span>
                                     </span>
                                     <span class="text-slate-300">|</span>
                                     <span class="text-pink-600 flex items-center gap-1">
-                                        <i class="fa-solid fa-venus"></i> หญิง <span id="countFemale" class="bg-pink-100 text-pink-900 px-2 py-0.5 rounded-md text-xs">0</span>
+                                        <i class="fa-solid fa-venus"></i> หญิง <span id="countFemale" class="bg-pink-100 text-pink-900 px-2 py-0.5 rounded-md text-xs">๐</span>
                                     </span>
                                 </div>
                                 <div id="genderRatioBadge" class="text-xs px-2.5 py-1 rounded-lg bg-blue-50 text-blue-800 font-semibold border border-blue-200">
@@ -291,7 +291,7 @@
                         </div>
                         <div>
                             <div class="text-xs font-semibold text-slate-500">หมู่บ้านเป้าหมาย</div>
-                            <div id="dashTotalVillagesBadge" class="text-2xl font-bold text-slate-900 font-prompt">81 <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span></div>
+                            <div id="dashTotalVillagesBadge" class="text-2xl font-bold text-slate-900 font-prompt">๘๑ <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span></div>
                         </div>
                     </div>
 
@@ -301,7 +301,7 @@
                         </div>
                         <div>
                             <div class="text-xs font-semibold text-slate-500">รายงานแล้ว</div>
-                            <div id="dashReportedCount" class="text-2xl font-bold text-emerald-600 font-prompt">0 <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span></div>
+                            <div id="dashReportedCount" class="text-2xl font-bold text-emerald-600 font-prompt">๐ <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span></div>
                         </div>
                     </div>
 
@@ -311,7 +311,7 @@
                         </div>
                         <div>
                             <div class="text-xs font-semibold text-slate-500">คงเหลือที่ต้องรายงาน</div>
-                            <div id="dashPendingCount" class="text-2xl font-bold text-amber-600 font-prompt">81 <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span></div>
+                            <div id="dashPendingCount" class="text-2xl font-bold text-amber-600 font-prompt">๘๑ <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span></div>
                         </div>
                     </div>
 
@@ -321,7 +321,7 @@
                         </div>
                         <div>
                             <div class="text-xs font-semibold text-slate-500">อช. รวมทั้งหมด</div>
-                            <div id="dashTotalVolunteers" class="text-2xl font-bold text-indigo-600 font-prompt">0 <span class="text-xs font-normal text-slate-500">คน</span></div>
+                            <div id="dashTotalVolunteers" class="text-2xl font-bold text-indigo-600 font-prompt">๐ <span class="text-xs font-normal text-slate-500">คน</span></div>
                         </div>
                     </div>
                 </div>
@@ -332,7 +332,7 @@
                         <i class="fa-solid fa-filter text-blue-600"></i>
                         <span class="text-sm font-bold text-slate-700">กรองตามตำบล:</span>
                         <select id="dashTambonFilter" onchange="renderDashboard()" class="bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-blue-500">
-                            <option value="">-- ทุกตำบล (8 ตำบล) --</option>
+                            <option value="">-- ทุกตำบล (๘ ตำบล) --</option>
                         </select>
                     </div>
                     <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
@@ -395,7 +395,7 @@
                                 <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
                                     <th class="p-3 text-center w-12">ที่</th>
                                     <th class="p-3">ตำบล / หมู่บ้าน</th>
-                                    <th class="p-3">รายชื่ออาสาพัฒนาชุมชน (อช.) พร้อมบ้านเลขที่/อาชีพ</th>
+                                    <th class="p-3">รายชื่ออาสาพัฒนาชุมชน (อช.) พร้อมบ้านเลขที่ อาชีพ และเบอร์โทร</th>
                                     <th class="p-3 text-center">สัดส่วนเพศ</th>
                                     <th class="p-3 text-center">วันที่บันทึก</th>
                                     <th class="p-3 text-center w-28">จัดการ</th>
@@ -445,7 +445,7 @@
                         <p class="indent-8 mt-1">ในการนี้ <span id="printTambonSubtitle" class="font-semibold">ตำบล.......................</span> ได้ดำเนินการคัดเลือกอาสาพัฒนาชุมชน (อช.) ครบถ้วนทุกหมู่บ้านเรียบร้อยแล้ว จึงขอรายงานผลการคัดเลือกฯ ดังรายละเอียดปรากฏตามตารางแนบท้ายนี้</p>
                     </div>
 
-                    <!-- Print Table (No ID card for safety, with House No. & Occupation) -->
+                    <!-- Print Table (No ID card for safety, with House No., Occupation & Phone) -->
                     <div class="my-6">
                         <table class="w-full border-collapse border border-slate-800 text-sm">
                             <thead>
@@ -598,65 +598,65 @@ function doPost(e) {
             {
                 name: "ตำบลโคกเหล็ก",
                 villages: [
-                    "บ้านโคกอรุณ หมู่ที่ 1", "บ้านหนองหว้า หมู่ที่ 2", "บ้านกระสังพัฒนา หมู่ที่ 3", 
-                    "บ้านถนน หมู่ที่ 4", "บ้านโคกเหล็ก หมู่ที่ 5", "บ้านหว้า หมู่ที่ 6", 
-                    "บ้านกระสังสามัคคี หมู่ที่ 7", "บ้านโคกขมิ้น หมู่ที่ 8", "บ้านโคกขี้ตุ่น หมู่ที่ 9", "บ้านตาเมิน หมู่ที่ 10", "บ้านถนนประชาอาสา หมู่ที่ 11"
+                    "บ้านโคกอรุณ หมู่ที่ ๑", "บ้านหนองหว้า หมู่ที่ ๒", "บ้านกระสังพัฒนา หมู่ที่ ๓", 
+                    "บ้านถนน หมู่ที่ ๔", "บ้านโคกเหล็ก หมู่ที่ ๕", "บ้านหว้า หมู่ที่ ๖", 
+                    "บ้านกระสังสามัคคี หมู่ที่ ๗", "บ้านโคกขมิ้น หมู่ที่ ๘", "บ้านโคกขี้ตุ่น หมู่ที่ ๙", "บ้านตาเมิน หมู่ที่ ๑๐", "บ้านถนนประชาอาสา หมู่ที่ ๑๑"
                 ]
             },
             {
                 name: "ตำบลตาเสา",
                 villages: [
-                    "บ้านตาเสา หมู่ที่ 1", "บ้านหว้า หมู่ที่ 2", "บ้านทานตะวัน หมู่ที่ 3", 
-                    "บ้านกระโดน หมู่ที่ 4", "บ้านมะขาม หมู่ที่ 5", "บ้านตาเสา หมู่ที่ 6", 
-                    "บ้านขาม หมู่ที่ 7", "บ้านสามัคคี หมู่ที่ 8", "บ้านหนองแวง หมู่ที่ 9", "บ้านบ่อทอง หมู่ที่ 10"
+                    "บ้านตาเสา หมู่ที่ ๑", "บ้านหว้า หมู่ที่ ๒", "บ้านทานตะวัน หมู่ที่ ๓", 
+                    "บ้านกระโดน หมู่ที่ ๔", "บ้านมะขาม หมู่ที่ ๕", "บ้านตาเสา หมู่ที่ ๖", 
+                    "บ้านขาม หมู่ที่ ๗", "บ้านสามัคคี หมู่ที่ ๘", "บ้านหนองแวง หมู่ที่ ๙", "บ้านบ่อทอง หมู่ที่ ๑๐"
                 ]
             },
             {
                 name: "ตำบลบ้านตะโก",
                 villages: [
-                    "บ้านตะโก หมู่ที่ 1", "บ้านโสน หมู่ที่ 2", "บ้านโคกโพธิ์ หมู่ที่ 3", 
-                    "บ้านโชคกราด หมู่ที่ 4", "บ้านโชคดี หมู่ที่ 5", "บ้านปรือเวง หมู่ที่ 6", 
-                    "บ้านเกตุเหนือ หมู่ที่ 7", "บ้านเกตุใต้ หมู่ที่ 8", "บ้านหนองกก หมู่ที่ 9"
+                    "บ้านตะโก หมู่ที่ ๑", "บ้านโสน หมู่ที่ ๒", "บ้านโคกโพธิ์ หมู่ที่ ๓", 
+                    "บ้านโชคกราด หมู่ที่ ๔", "บ้านโชคดี หมู่ที่ ๕", "บ้านปรือเวง หมู่ที่ ๖", 
+                    "บ้านเกตุเหนือ หมู่ที่ ๗", "บ้านเกตุใต้ หมู่ที่ ๘", "บ้านหนองกก หมู่ที่ ๙"
                 ]
             },
             {
                 name: "ตำบลเมืองโพธิ์",
                 villages: [
-                    "บ้านเมืองโพธิ์ หมู่ที่ 1", "บ้านปะคำ หมู่ที่ 2", "บ้านพูนสุข หมู่ที่ 3", 
-                    "บ้านประดู่ หมู่ที่ 4", "บ้านเมืองเหนือ หมู่ที่ 5", "บ้านเมืองโพธิ์ หมู่ที่ 6", 
-                    "บ้านศรีเจริญ หมู่ที่ 7", "บ้านไผน้อย หมู่ที่ 8", "บ้านจาน หมู่ที่ 9"
+                    "บ้านเมืองโพธิ์ หมู่ที่ ๑", "บ้านปะคำ หมู่ที่ ๒", "บ้านพูนสุข หมู่ที่ ๓", 
+                    "บ้านประดู่ หมู่ที่ ๔", "บ้านเมืองเหนือ หมู่ที่ ๕", "บ้านเมืองโพธิ์ หมู่ที่ ๖", 
+                    "บ้านศรีเจริญ หมู่ที่ ๗", "บ้านไผน้อย หมู่ที่ ๘", "บ้านจาน หมู่ที่ ๙"
                 ]
             },
             {
                 name: "ตำบลสนวน",
                 villages: [
-                    "บ้านสวายจีกน้อย หมู่ที่ 1", "บ้านสนวนนอก หมู่ที่ 2", "บ้านสนวนใน หมู่ที่ 3", 
-                    "บ้านแซะซอ หมู่ที่ 4", "บ้านสวายจีกน้อย หมู่ที่ 5", "บ้านจบก หมู่ที่ 6", 
-                    "บ้านโคกกลัน หมู่ที่ 7", "บ้านพลวงน้อย หมู่ที่ 8", "บ้านระกา หมู่ที่ 9", "บ้านหนองโพธิ์ หมู่ที่ 10", "บ้านหนองบัว หมู่ที่ 11", "บ้านโคกสุวรรณ หมู่ที่ 12"
+                    "บ้านสวายจีกน้อย หมู่ที่ ๑", "บ้านสนวนนอก หมู่ที่ ๒", "บ้านสนวนใน หมู่ที่ ๓", 
+                    "บ้านแซะซอ หมู่ที่ ๔", "บ้านสวายจีกน้อย หมู่ที่ ๕", "บ้านจบก หมู่ที่ ๖", 
+                    "บ้านโคกกลัน หมู่ที่ ๗", "บ้านพลวงน้อย หมู่ที่ ๘", "บ้านระกา หมู่ที่ ๙", "บ้านหนองโพธิ์ หมู่ที่ ๑๐", "บ้านหนองบัว หมู่ที่ ๑๑", "บ้านโคกสุวรรณ หมู่ที่ ๑๒"
                 ]
             },
             {
                 name: "ตำบลสามแวง",
                 villages: [
-                    "บ้านสามแวง หมู่ที่ 1", "บ้านใหม่ หมู่ที่ 2", "บ้านใหม่ หมู่ที่ 3", 
-                    "บ้านสะแกสามัคคี หมู่ที่ 4", "บ้านใหม่ หมู่ที่ 5", "บ้านโคกเจริญ หมู่ที่ 6", 
-                    "บ้านใหม่ทักษิณ หมู่ที่ 7", "บ้านเพชรน้อย หมู่ที่ 8", "บ้านโคกกระเบา หมู่ที่ 9"
+                    "บ้านสามแวง หมู่ที่ ๑", "บ้านใหม่ หมู่ที่ ๒", "บ้านใหม่ หมู่ที่ ๓", 
+                    "บ้านสะแกสามัคคี หมู่ที่ ๔", "บ้านใหม่ หมู่ที่ ๕", "บ้านโคกเจริญ หมู่ที่ ๖", 
+                    "บ้านใหม่ทักษิณ หมู่ที่ ๗", "บ้านเพชรน้อย หมู่ที่ ๘", "บ้านโคกกระเบา หมู่ที่ ๙"
                 ]
             },
             {
                 name: "ตำบลห้วยราช",
                 villages: [
-                    "บ้านพลวง หมู่ที่ 1", "บ้านสี่เหลี่ยม หมู่ที่ 2", "บ้านตลาดห้วยราช หมู่ที่ 3", 
-                    "บ้านโคกกรวด หมู่ที่ 4", "บ้านบุตาแพง หมู่ที่ 5", "บ้านกรวด หมู่ที่ 6", 
-                    "บ้านดวน หมู่ที่ 7", "บ้านกราด หมู่ที่ 8", "บ้านสง่างาม หมู่ที่ 9", "บ้านสุขสมบูรณ์ หมู่ที่ 10"
+                    "บ้านพลวง หมู่ที่ ๑", "บ้านสี่เหลี่ยม หมู่ที่ ๒", "บ้านตลาดห้วยราช หมู่ที่ ๓", 
+                    "บ้านโคกกรวด หมู่ที่ ๔", "บ้านบุตาแพง หมู่ที่ ๕", "บ้านกรวด หมู่ที่ ๖", 
+                    "บ้านดวน หมู่ที่ ๗", "บ้านกราด หมู่ที่ ๘", "บ้านสง่างาม หมู่ที่ ๙", "บ้านสุขสมบูรณ์ หมู่ที่ ๑๐"
                 ]
             },
             {
                 name: "ตำบลห้วยราชา",
                 villages: [
-                    "บ้านห้วยราช หมู่ที่ 1", "บ้านตะครอง หมู่ที่ 2", "บ้านเมืองต่ำ หมู่ที่ 3", 
-                    "บ้านส่วนรวม หมู่ที่ 4", "บ้านตะไก่ หมู่ที่ 5", "บ้านห้วยแก้ว หมู่ที่ 6", 
-                    "บ้านเพชร หมู่ที่ 7", "บ้านห้วยราชพัฒนา หมู่ที่ 8", "บ้านห้วยราชา หมู่ที่ 9", "บ้านสวายเจริญ หมู่ที่ 10"
+                    "บ้านห้วยราช หมู่ที่ ๑", "บ้านตะครอง หมู่ที่ ๒", "บ้านเมืองต่ำ หมู่ที่ ๓", 
+                    "บ้านส่วนรวม หมู่ที่ ๔", "บ้านตะไก่ หมู่ที่ ๕", "บ้านห้วยแก้ว หมู่ที่ ๖", 
+                    "บ้านเพชร หมู่ที่ ๗", "บ้านห้วยราชพัฒนา หมู่ที่ ๘", "บ้านห้วยราชา หมู่ที่ ๙", "บ้านสวายเจริญ หมู่ที่ ๑๐"
                 ]
             }
         ];
@@ -705,8 +705,8 @@ function doPost(e) {
             const listFilter = document.getElementById('listTambonFilter');
             const printSelect = document.getElementById('printTambonSelect');
 
-            tambonSelect.innerHTML = '<option value="">-- โปรดเลือกตำบล (8 ตำบล) --</option>';
-            if(dashFilter) dashFilter.innerHTML = '<option value="">-- ทุกตำบล (8 ตำบล) --</option>';
+            tambonSelect.innerHTML = '<option value="">-- โปรดเลือกตำบล (๘ ตำบล) --</option>';
+            if(dashFilter) dashFilter.innerHTML = '<option value="">-- ทุกตำบล (๘ ตำบล) --</option>';
             if(listFilter) listFilter.innerHTML = '<option value="">-- ทุกตำบล --</option>';
             if(printSelect) printSelect.innerHTML = '';
 
@@ -813,7 +813,7 @@ function doPost(e) {
                         ` : ''}
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
                         <div>
                             <label class="block text-xs font-bold text-slate-700 uppercase mb-1">คำนำหน้าชื่อ ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
                             <select id="prefix-${i}" ${isRequired ? 'required' : ''} class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-medium">
@@ -823,21 +823,25 @@ function doPost(e) {
                                 <option value="นางสาว">นางสาว</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="lg:col-span-2">
                             <label class="block text-xs font-bold text-slate-700 uppercase mb-1">ชื่อ-สกุล ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
                             <input type="text" id="fullname-${i}" ${isRequired ? 'required' : ''} placeholder="ชื่อและนามสกุล" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">เลขบัตรประชาชน (13 หลัก) ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
-                            <input type="text" id="idcard-${i}" ${isRequired ? 'required' : ''} maxlength="13" placeholder="เลขบัตรประชาชน 13 หลัก" oninput="validateIdCard(this)" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-mono">
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">เลขบัตรประชาชน (๑๓ หลัก) ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
+                            <input type="text" id="idcard-${i}" ${isRequired ? 'required' : ''} maxlength="13" placeholder="เลขบัตร ปชช. ๑๓ หลัก" oninput="validateIdCard(this)" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-mono">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">บ้านเลขที่ / ประกอบอาชีพ ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
-                            <input type="text" id="housejob-${i}" ${isRequired ? 'required' : ''} placeholder="เช่น บ้านเลขที่ 123 / เกษตรกรรม" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs">
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">บ้านเลขที่ ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
+                            <input type="text" id="houseno-${i}" ${isRequired ? 'required' : ''} placeholder="เช่น ๑๒๓ หรือ ๑๒๓/๑" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs">
                         </div>
                         <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">ประกอบอาชีพ ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
+                            <input type="text" id="occupation-${i}" ${isRequired ? 'required' : ''} placeholder="เช่น เกษตรกรรม, ค้าขาย" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs">
+                        </div>
+                        <div class="sm:col-span-2 lg:col-span-6">
                             <label class="block text-xs font-bold text-slate-700 uppercase mb-1">หมายเลขโทรศัพท์ ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
-                            <input type="tel" id="phone-${i}" ${isRequired ? 'required' : ''} maxlength="10" placeholder="เบอร์โทร 10 หลัก" oninput="validatePhone(this)" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-mono">
+                            <input type="tel" id="phone-${i}" ${isRequired ? 'required' : ''} maxlength="10" placeholder="เบอร์โทร ๑๐ หลัก" oninput="validatePhone(this)" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-mono">
                         </div>
                     </div>
                 `;
@@ -869,7 +873,8 @@ function doPost(e) {
                 document.getElementById('prefix-5').value = document.getElementById('prefix-6').value;
                 document.getElementById('fullname-5').value = document.getElementById('fullname-6').value;
                 document.getElementById('idcard-5').value = document.getElementById('idcard-6').value;
-                document.getElementById('housejob-5').value = document.getElementById('housejob-6').value;
+                document.getElementById('houseno-5').value = document.getElementById('houseno-6').value;
+                document.getElementById('occupation-5').value = document.getElementById('occupation-6').value;
                 document.getElementById('phone-5').value = document.getElementById('phone-6').value;
             }
             activePersonsCount = personNum - 1;
@@ -881,12 +886,14 @@ function doPost(e) {
                 const p = document.getElementById(`prefix-${i}`);
                 const f = document.getElementById(`fullname-${i}`);
                 const c = document.getElementById(`idcard-${i}`);
-                const hj = document.getElementById(`housejob-${i}`);
+                const hn = document.getElementById(`houseno-${i}`);
+                const oc = document.getElementById(`occupation-${i}`);
                 const ph = document.getElementById(`phone-${i}`);
                 if (p) p.value = "";
                 if (f) f.value = "";
                 if (c) c.value = "";
-                if (hj) hj.value = "";
+                if (hn) hn.value = "";
+                if (oc) oc.value = "";
                 if (ph) ph.value = "";
             }
             activePersonsCount = 4;
@@ -902,12 +909,14 @@ function doPost(e) {
                 const p = document.getElementById(`prefix-${i}`);
                 const f = document.getElementById(`fullname-${i}`);
                 const c = document.getElementById(`idcard-${i}`);
-                const hj = document.getElementById(`housejob-${i}`);
+                const hn = document.getElementById(`houseno-${i}`);
+                const oc = document.getElementById(`occupation-${i}`);
                 const ph = document.getElementById(`phone-${i}`);
                 if (p) p.value = v.prefix || "";
                 if (f) f.value = v.fullname || "";
                 if (c) c.value = v.idcard || "";
-                if (hj) hj.value = v.housejob || "";
+                if (hn) hn.value = v.houseno || "";
+                if (oc) oc.value = v.occupation || "";
                 if (ph) ph.value = v.phone || "";
             });
             updateGenderCounts();
@@ -923,8 +932,8 @@ function doPost(e) {
                 else if (pfx === "นาง" || pfx === "นางสาว") female++;
             }
 
-            document.getElementById('countMale').innerText = male;
-            document.getElementById('countFemale').innerText = female;
+            document.getElementById('countMale').innerText = toThaiNumber(male);
+            document.getElementById('countFemale').innerText = toThaiNumber(female);
 
             const badge = document.getElementById('genderRatioBadge');
             const total = male + female;
@@ -938,6 +947,11 @@ function doPost(e) {
                 badge.className = "text-xs px-2.5 py-1 rounded-lg bg-amber-50 text-amber-800 font-semibold border border-amber-200";
                 badge.innerText = "ควรเกลี่ยสัดส่วนเพศ";
             }
+        }
+
+        function toThaiNumber(num) {
+            const thaiDigits = ['๐', '๑', '๒', '๓', '๔', '๕', '๖', '๗', '๘', '๙'];
+            return String(num).replace(/\d/g, d => thaiDigits[d]);
         }
 
         function validateIdCard(input) {
@@ -964,21 +978,22 @@ function doPost(e) {
                 const prefix = document.getElementById(`prefix-${i}`).value;
                 const fullname = document.getElementById(`fullname-${i}`).value.trim();
                 const idcard = document.getElementById(`idcard-${i}`).value.trim();
-                const housejob = document.getElementById(`housejob-${i}`).value.trim();
+                const houseno = document.getElementById(`houseno-${i}`).value.trim();
+                const occupation = document.getElementById(`occupation-${i}`).value.trim();
                 const phone = document.getElementById(`phone-${i}`).value.trim();
 
-                if (i <= 4 && (!prefix || !fullname || !idcard || !housejob || !phone)) {
-                    showCustomModal(`กรุณากรอกข้อมูลของ อช. คนที่ ${i} ให้ครบถ้วนสมบูรณ์`, "ข้อมูลไม่ครบถ้วน", "error");
+                if (i <= 4 && (!prefix || !fullname || !idcard || !houseno || !occupation || !phone)) {
+                    showCustomModal(`กรุณากรอกข้อมูลของ อช. คนที่ ${toThaiNumber(i)} ให้ครบถ้วนสมบูรณ์`, "ข้อมูลไม่ครบถ้วน", "error");
                     return;
                 }
 
                 if (fullname) {
-                    volunteers.push({ prefix, fullname, idcard, housejob, phone });
+                    volunteers.push({ prefix, fullname, idcard, houseno, occupation, phone });
                 }
             }
 
             if (volunteers.length < 4) {
-                showCustomModal("ต้องมีรายชื่อ อช. อย่างน้อย 4 คนต่อหมู่บ้านตามระเบียบ", "จำนวน อช. ไม่ครบถ้วน", "error");
+                showCustomModal("ต้องมีรายชื่อ อช. อย่างน้อย ๔ คนต่อหมู่บ้านตามระเบียบ", "จำนวน อช. ไม่ครบถ้วน", "error");
                 return;
             }
 
@@ -996,7 +1011,7 @@ function doPost(e) {
                 tambon,
                 villageName,
                 volunteers,
-                volunteersSummary: volunteers.map(v => `${v.prefix}${v.fullname} (${v.housejob})`).join('; '),
+                volunteersSummary: volunteers.map(v => `${v.prefix}${v.fullname} (บ้านเลขที่ ${v.houseno} อาชีพ ${v.occupation})`).join('; '),
                 maleCount,
                 femaleCount,
                 timestamp
@@ -1090,7 +1105,7 @@ function doPost(e) {
                             <h4 class="font-bold text-slate-800 text-sm font-prompt">${v}</h4>
                         </div>
                         <div class="pt-2 border-t border-slate-100 text-xs text-slate-600 flex items-center justify-between">
-                            <span>อช. ${rep ? rep.volunteers.length + ' คน' : '0 คน'}</span>
+                            <span>อช. ${rep ? toThaiNumber(rep.volunteers.length) + ' คน' : '๐ คน'}</span>
                             <span class="text-blue-600 font-semibold flex items-center gap-1">
                                 ${rep ? 'แก้ไขข้อมูล' : 'กรอกข้อมูล'} <i class="fa-solid fa-arrow-right text-[10px]"></i>
                             </span>
@@ -1100,11 +1115,11 @@ function doPost(e) {
                 });
             });
 
-            document.getElementById('dashTotalVillagesBadge').innerHTML = `${totalVillagesCount} <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span>`;
-            document.getElementById('dashReportedCount').innerHTML = `${reportedCount} <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span>`;
-            document.getElementById('dashPendingCount').innerHTML = `${totalVillagesCount - reportedCount} <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span>`;
-            document.getElementById('dashTotalVolunteers').innerHTML = `${totalVolunteersCount} <span class="text-xs font-normal text-slate-500">คน</span>`;
-            document.getElementById('completedBadge').innerText = `${reportedCount}/${totalVillagesCount}`;
+            document.getElementById('dashTotalVillagesBadge').innerHTML = `${toThaiNumber(totalVillagesCount)} <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span>`;
+            document.getElementById('dashReportedCount').innerHTML = `${toThaiNumber(reportedCount)} <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span>`;
+            document.getElementById('dashPendingCount').innerHTML = `${toThaiNumber(totalVillagesCount - reportedCount)} <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span>`;
+            document.getElementById('dashTotalVolunteers').innerHTML = `${toThaiNumber(totalVolunteersCount)} <span class="text-xs font-normal text-slate-500">คน</span>`;
+            document.getElementById('completedBadge').innerText = `${toThaiNumber(reportedCount)}/${toThaiNumber(totalVillagesCount)}`;
         }
 
         function updateDashboardCounters() {
@@ -1133,13 +1148,13 @@ function doPost(e) {
 
                 let volunteersHtml = rep.volunteers.map((v, idx) => `
                     <div class="py-0.5 text-xs text-slate-700">
-                        <span class="font-semibold text-slate-900">${idx + 1}. ${v.prefix}${v.fullname}</span> 
-                        <span class="text-slate-500">(${v.housejob})</span>
+                        <span class="font-semibold text-slate-900">${toThaiNumber(idx + 1)}. ${v.prefix}${v.fullname}</span> 
+                        <span class="text-slate-500">(บ้านเลขที่ ${v.houseno}, อาชีพ ${v.occupation})</span>
                     </div>
                 `).join('');
 
                 tr.innerHTML = `
-                    <td class="p-3 text-center font-bold text-slate-500">${index++}</td>
+                    <td class="p-3 text-center font-bold text-slate-500">${toThaiNumber(index++)}</td>
                     <td class="p-3">
                         <div class="font-bold text-slate-900 font-prompt">${rep.villageName}</div>
                         <div class="text-[11px] text-slate-500">${rep.tambon}</div>
@@ -1149,7 +1164,7 @@ function doPost(e) {
                     </td>
                     <td class="p-3 text-center">
                         <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 font-semibold text-[11px]">
-                            <i class="fa-solid fa-mars"></i> ${rep.maleCount} | <i class="fa-solid fa-venus"></i> ${rep.femaleCount}
+                            <i class="fa-solid fa-mars"></i> ${toThaiNumber(rep.maleCount)} | <i class="fa-solid fa-venus"></i> ${toThaiNumber(rep.femaleCount)}
                         </span>
                     </td>
                     <td class="p-3 text-center text-xs text-slate-500">${rep.timestamp || '-'}</td>
@@ -1221,12 +1236,12 @@ function doPost(e) {
                 let genderStr = "-";
 
                 if (rep && rep.volunteers) {
-                    volunteersStr = rep.volunteers.map((v, i) => `${i + 1}. ${v.prefix}${v.fullname} [${v.housejob}] (${v.phone})`).join('<br>');
-                    genderStr = `ชาย ${rep.maleCount} คน<br>หญิง ${rep.femaleCount} คน`;
+                    volunteersStr = rep.volunteers.map((v, i) => `${toThaiNumber(i + 1)}. ${v.prefix}${v.fullname} [บ้านเลขที่ ${v.houseno}, อาชีพ ${v.occupation}] (${v.phone})`).join('<br>');
+                    genderStr = `ชาย ${toThaiNumber(rep.maleCount)} คน<br>หญิง ${toThaiNumber(rep.femaleCount)} คน`;
                 }
 
                 tr.innerHTML = `
-                    <td class="border border-slate-800 p-2 text-center align-top font-bold">${index++}</td>
+                    <td class="border border-slate-800 p-2 text-center align-top font-bold">${toThaiNumber(index++)}</td>
                     <td class="border border-slate-800 p-2 align-top font-bold">${vName}</td>
                     <td class="border border-slate-800 p-2 align-top">${volunteersStr}</td>
                     <td class="border border-slate-800 p-2 text-center align-top text-xs">${genderStr}</td>
@@ -1248,7 +1263,8 @@ function doPost(e) {
                         "คำนำหน้า": v.prefix,
                         "ชื่อ-นามสกุล": v.fullname,
                         "เลขบัตรประชาชน": v.idcard,
-                        "บ้านเลขที่/ประกอบอาชีพ": v.housejob,
+                        "บ้านเลขที่": v.houseno,
+                        "ประกอบอาชีพ": v.occupation,
                         "เบอร์โทรศัพท์": v.phone,
                         "วันที่บันทึก": rep.timestamp
                     });
