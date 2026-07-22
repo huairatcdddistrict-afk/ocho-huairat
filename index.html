@@ -117,7 +117,7 @@
                                 <i class="fa-solid fa-calendar-check text-blue-400"></i> กำหนดส่งรายงาน
                             </div>
                             <div class="text-xs sm:text-sm font-bold text-white mt-0.5">
-                                ภายในวันศุกร์ที่ <span class="text-sky-300 font-extrabold">31 ก.ค. 2569</span>
+                                ภายในวันศุกร์ที่ <span class="text-sky-300 font-extrabold">๓๑ ก.ค. ๒๕๖๙</span>
                             </div>
                         </div>
                     </div>
@@ -297,7 +297,7 @@
 
                     <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center gap-4">
                         <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl shrink-0 shadow-sm">
-                            <i class="fa-solid fa-[#1e293b] fa-circle-check"></i>
+                            <i class="fa-solid fa-circle-check"></i>
                         </div>
                         <div>
                             <div class="text-xs font-semibold text-slate-500">รายงานแล้ว</div>
@@ -426,7 +426,7 @@
                     </div>
                 </div>
 
-                <!-- Official Document Container (Formatted strictly as requested in document specs) -->
+                <!-- Official Document Container -->
                 <div id="printDocumentView" class="print-page bg-white p-8 sm:p-12 rounded-2xl border border-slate-300 shadow-md max-w-4xl mx-auto th-sarabun text-slate-900 leading-relaxed">
                     
                     <!-- Document Header with Logo -->
@@ -468,6 +468,21 @@
 
             <!-- TAB 5: GOOGLE APPS SCRIPT GUIDE & SETTINGS -->
             <div id="guideTab" class="tab-content hidden space-y-6">
+                <!-- Data Sync & Sharing Warning Card -->
+                <div class="bg-amber-50 border-2 border-amber-300 rounded-2xl p-5 sm:p-6 shadow-sm space-y-3">
+                    <div class="flex items-center gap-2.5 text-amber-950 font-bold text-base font-prompt">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-600 text-xl"></i>
+                        <span>สาเหตุที่ส่งลิงก์ไปแล้วข้อมูลเป็น 0 และวิธีแก้ไข</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-amber-900 leading-relaxed">
+                        เนื่องจากข้อมูลถูกบันทึกไว้ในเบราว์เซอร์ของเครื่องผู้กรอกแต่ละคน (Local Storage) หากคุณเปิดไฟล์ในคอมพิวเตอร์ของคุณเองแล้วส่งลิงก์ไฟล์ HTML ไป คนอื่นจะเปิดเจอข้อมูลในเครื่องของเขาซึ่งยังว่างเปล่า (เป็น 0) 
+                        <br><br>
+                        <strong>วิธีแก้ไขให้ทุกคนเห็นข้อมูลตรงกัน:</strong>
+                        <br>1. เชื่อมต่อ <strong>Google Sheets Web App URL</strong> ในช่องด้านล่าง (ข้อมูลจะบันทึกเข้า Google Sheets ส่วนกลางทันที)
+                        <br>2. อัปโหลดเว็บนี้ขึ้น <strong>GitHub Pages, Netlify หรือ Vercel</strong> แล้วนำลิงก์เว็บไซต์ออนไลน์นั้นไปแชร์ให้ผู้อื่นกรอก
+                    </p>
+                </div>
+
                 <!-- Custom Logo URL Setup -->
                 <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-sm space-y-3">
                     <div class="flex items-center gap-2.5 text-slate-800 font-bold text-base font-prompt">
@@ -530,11 +545,60 @@
                                 </button>
                             </div>
                             <pre id="gasCodeBlock" class="text-sky-300 p-2 overflow-x-auto text-xs font-mono">
+function doGet(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var rows = sheet.getDataRange().getValues();
+  var reports = [];
+  
+  if (rows.length > 1) {
+    for (var i = 1; i < rows.length; i++) {
+      var r = rows[i];
+      if (!r[1]) continue;
+      var volunteers = [];
+      for (var vIdx = 0; vIdx &lt; 6; vIdx++) {
+        var baseCol = 4 + (vIdx * 5);
+        if (r[baseCol]) {
+          var fullNameFull = r[baseCol];
+          var prefix = "นาย";
+          if (fullNameFull.indexOf("นางสาว") === 0) prefix = "นางสาว";
+          else if (fullNameFull.indexOf("นาง") === 0) prefix = "นาง";
+          
+          var nameOnly = fullNameFull.replace(/^(นาย|นางสาว|นาง)/, "");
+          volunteers.push({
+            personNo: vIdx + 1,
+            prefix: prefix,
+            fullname: nameOnly,
+            idCard: r[baseCol + 1] || "",
+            houseNo: r[baseCol + 2] || "",
+            occupation: r[baseCol + 3] || "",
+            phone: r[baseCol + 4] || ""
+          });
+        }
+      }
+      
+      var males = volunteers.filter(function(v) { return v.prefix === "นาย"; }).length;
+      reports.push({
+        id: r[1] + "_Moo" + r[2],
+        tambon: r[1],
+        moo: String(r[2]),
+        villageName: r[3],
+        volunteersCount: volunteers.length,
+        malesCount: males,
+        femalesCount: volunteers.length - males,
+        volunteers: volunteers,
+        updatedAt: new Date(r[0]).toLocaleDateString('th-TH')
+      });
+    }
+  }
+  
+  return ContentService.createTextOutput(JSON.stringify({ "reports": reports }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
 function doPost(e) {
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     
-    // ตั้งค่าหัวตารางถ้ายังไม่มี
     if (sheet.getLastRow() === 0) {
       sheet.appendRow([
         "วัน-เวลาบันทึก", "ตำบล", "หมู่ที่", "ชื่อหมู่บ้าน",
@@ -647,7 +711,7 @@ function doPost(e) {
         </div>
     </div>
 
-    <!-- Custom Reset Confirmation Modal (Replacing native confirm dialog) -->
+    <!-- Custom Reset Confirmation Modal -->
     <div id="resetConfirmModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden no-print">
         <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 space-y-4">
             <div class="flex items-center gap-3 text-rose-600 font-bold text-lg font-prompt">
@@ -806,7 +870,7 @@ function doPost(e) {
         let currentPublicShareUrl = "";
         let currentCustomLogoUrl = "";
 
-        // Load application data on load
+        // Load application data on load and try to fetch from Google Sheets if URL exists
         window.addEventListener('DOMContentLoaded', () => {
             loadFromLocalStorage();
             applyCustomLogo();
@@ -816,6 +880,10 @@ function doPost(e) {
             renderRecordsTable();
             renderPrintSelectOptions();
             checkSavedScriptUrl();
+
+            if (currentScriptUrl) {
+                fetchReportsFromCloud();
+            }
         });
 
         function loadFromLocalStorage() {
@@ -888,9 +956,29 @@ function doPost(e) {
             checkSavedScriptUrl();
 
             if (url) {
-                showToast("บันทึกการเชื่อมต่อ Google Sheets สำเร็จ!", "success");
+                showToast("บันทึกการเชื่อมต่อ Google Sheets สำเร็จ! กำลังดึงข้อมูล...", "success");
+                fetchReportsFromCloud();
             } else {
                 showToast("ยกเลิกการเชื่อมต่อ Google Sheets แล้ว", "info");
+            }
+        }
+
+        async function fetchReportsFromCloud() {
+            if (!currentScriptUrl) return;
+            try {
+                showToast("กำลังซิงค์ข้อมูลจาก Google Sheets...", "info");
+                const res = await fetch(currentScriptUrl + "?action=getReports");
+                const data = await res.json();
+                if (data && Array.isArray(data.reports) && data.reports.length > 0) {
+                    submittedReports = data.reports;
+                    saveToLocalStorage();
+                    updateDashboard();
+                    renderRecordsTable();
+                    renderPrintSelectOptions();
+                    showToast("ซิงค์ข้อมูลจาก Google Sheets สำเร็จเรียบร้อย", "success");
+                }
+            } catch (err) {
+                console.error("Fetch cloud reports error:", err);
             }
         }
 
@@ -1016,7 +1104,6 @@ function doPost(e) {
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <!-- Prefix & Full Name -->
                         <div class="lg:col-span-2">
                             <label class="block text-xs font-bold text-slate-700 mb-1.5">๑. คำนำหน้า - ชื่อ - สกุล ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
                             <div class="flex gap-2">
@@ -1030,7 +1117,6 @@ function doPost(e) {
                             </div>
                         </div>
 
-                        <!-- Gender Selector -->
                         <div>
                             <label class="block text-xs font-bold text-slate-700 mb-1.5">เพศ ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
                             <select id="v_gender_${i}" ${isRequired ? 'required' : ''} onchange="updateGenderCount()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs sm:text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-blue-500">
@@ -1039,25 +1125,21 @@ function doPost(e) {
                             </select>
                         </div>
 
-                        <!-- Citizen ID -->
                         <div>
                             <label class="block text-xs font-bold text-slate-700 mb-1.5">๒. เลขประจำตัวประชาชน (13 หลัก) ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
                             <input type="text" id="v_idCard_${i}" maxlength="17" ${isRequired ? 'required' : ''} placeholder="x-xxxx-xxxxx-xx-x" oninput="formatThaiIdCard(this)" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs sm:text-sm tracking-wider font-mono focus:ring-2 focus:ring-blue-500">
                         </div>
 
-                        <!-- House No -->
                         <div>
                             <label class="block text-xs font-bold text-slate-700 mb-1.5">๓. บ้านเลขที่ ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
                             <input type="text" id="v_houseNo_${i}" ${isRequired ? 'required' : ''} placeholder="เช่น 12/1 หมู่ 2" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs sm:text-sm focus:ring-2 focus:ring-blue-500">
                         </div>
 
-                        <!-- Occupation -->
                         <div>
                             <label class="block text-xs font-bold text-slate-700 mb-1.5">ประกอบอาชีพ ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
                             <input type="text" id="v_occupation_${i}" ${isRequired ? 'required' : ''} placeholder="เช่น เกษตรกร, ค้าขาย" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs sm:text-sm focus:ring-2 focus:ring-blue-500">
                         </div>
 
-                        <!-- Phone Number -->
                         <div class="lg:col-span-2">
                             <label class="block text-xs font-bold text-slate-700 mb-1.5">๔. หมายเลขโทรศัพท์ ${isRequired ? '<span class="text-rose-500">*</span>' : ''}</label>
                             <input type="tel" id="v_phone_${i}" maxlength="12" ${isRequired ? 'required' : ''} placeholder="08x-xxx-xxxx" oninput="formatPhone(this)" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs sm:text-sm font-mono focus:ring-2 focus:ring-blue-500">
@@ -1245,19 +1327,19 @@ function doPost(e) {
 
             if (currentScriptUrl) {
                 try {
-                    fetch(currentScriptUrl, {
+                    await fetch(currentScriptUrl, {
                         method: 'POST',
                         mode: 'no-cors',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(reportData)
                     });
-                    showToast(`บันทึกสำเร็จ! ส่งข้อมูลหมู่ที่ ${villageObj.moo} ลง Google Sheets แล้ว`, 'success');
+                    showToast(`บันทึกและส่งข้อมูลลง Google Sheets สำเร็จ!`, 'success');
                 } catch (err) {
                     console.error("Cloud save error", err);
                     showToast(`บันทึกในระบบสำเร็จ (ขัดข้องในการส่งลง Google Sheets)`, 'info');
                 }
             } else {
-                showToast(`บันทึกรายงาน หมู่ที่ ${villageObj.moo} บ้าน${villageObj.name} ต.${tambonVal} เรียบร้อยแล้ว!`, 'success');
+                showToast(`บันทึกรายงาน หมู่ที่ ${villageObj.moo} บ้าน${villageObj.name} เรียบร้อยแล้ว!`, 'success');
             }
 
             document.getElementById('selectPrintVillage').value = reportData.id;
@@ -1272,14 +1354,29 @@ function doPost(e) {
             handleTambonChange();
 
             const villageSelect = document.getElementById('villageSelect');
-            const targetVal = JSON.stringify({ moo: report.moo, name: report.villageName });
-            villageSelect.value = targetVal;
+            for (let i = 0; i < villageSelect.options.length; i++) {
+                const optVal = villageSelect.options[i].value;
+                if (optVal) {
+                    const parsed = JSON.parse(optVal);
+                    if (parsed.moo === report.moo) {
+                        villageSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
 
-            toggleOptionalPerson(report.volunteers.length, true);
+            handleVillageChange();
 
-            report.volunteers.forEach((v, index) => {
-                const i = index + 1;
-                if (document.getElementById(`v_prefix_${i}`)) {
+            const count = report.volunteers.length;
+            if (count > 4) {
+                toggleOptionalPerson(count, true);
+            } else {
+                toggleOptionalPerson(5, false);
+            }
+
+            report.volunteers.forEach((v, idx) => {
+                const i = idx + 1;
+                if (i <= 6) {
                     document.getElementById(`v_prefix_${i}`).value = v.prefix;
                     document.getElementById(`v_fullname_${i}`).value = v.fullname;
                     document.getElementById(`v_gender_${i}`).value = v.gender;
@@ -1291,7 +1388,8 @@ function doPost(e) {
             });
 
             updateGenderCount();
-            showToast(`โหลดข้อมูล หมู่ที่ ${moo} บ้าน${report.villageName} เข้าสู่ฟอร์มเรียบร้อย`, 'info');
+            switchTab('formTab');
+            showToast(`โหลดข้อมูล หมู่ที่ ${report.moo} บ้าน${report.villageName} ลงแบบฟอร์มเรียบร้อย`, 'success');
         }
 
         function showResetConfirmationModal() {
@@ -1303,35 +1401,33 @@ function doPost(e) {
         }
 
         function confirmResetForm() {
-            closeResetConfirmationModal();
             document.getElementById('reportForm').reset();
             document.getElementById('villageSelect').disabled = true;
             document.getElementById('villageSelect').innerHTML = '<option value="">-- โปรดเลือกตำบลก่อน --</option>';
             hideVillageNotice();
-            toggleOptionalPerson(4, false);
-            updateGenderCount();
-            showToast("ล้างแบบฟอร์มเรียบร้อย", "info");
+            activePersonsCount = 4;
+            renderVolunteerFormCards();
+            closeResetConfirmationModal();
+            showToast("ล้างข้อมูลในฟอร์มเรียบร้อยแล้ว", "info");
         }
 
         function updateDashboard() {
-            const totalVillages = huaiRachData.reduce((sum, item) => sum + item.villages.length, 0);
-            const reportedCount = submittedReports.length;
-            const pendingCount = totalVillages - reportedCount;
+            const totalVillages = 80;
+            const reportedSet = new Set(submittedReports.map(r => `${r.tambon}_${r.moo}`));
+            const reportedCount = reportedSet.size;
+            const pendingCount = Math.max(0, totalVillages - reportedCount);
 
-            let totalVolunteers = 0;
-            submittedReports.forEach(r => totalVolunteers += r.volunteersCount);
+            let totalVolunteersCount = 0;
+            submittedReports.forEach(r => {
+                totalVolunteersCount += r.volunteersCount;
+            });
 
-            const totalBadgeEl = document.getElementById('dashTotalVillagesBadge');
-            if (totalBadgeEl) {
-                totalBadgeEl.innerHTML = `${totalVillages} <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span>`;
-            }
-
+            document.getElementById('completedBadge').textContent = `${reportedCount}/80`;
             document.getElementById('dashReportedCount').innerHTML = `${reportedCount} <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span>`;
             document.getElementById('dashPendingCount').innerHTML = `${pendingCount} <span class="text-xs font-normal text-slate-500">หมู่บ้าน</span>`;
-            document.getElementById('dashTotalVolunteers').innerHTML = `${totalVolunteers} <span class="text-xs font-normal text-slate-500">คน</span>`;
-            document.getElementById('completedBadge').textContent = `${reportedCount}/${totalVillages}`;
+            document.getElementById('dashTotalVolunteers').innerHTML = `${totalVolunteersCount} <span class="text-xs font-normal text-slate-500">คน</span>`;
 
-            const percent = totalVillages > 0 ? Math.round((reportedCount / totalVillages) * 100) : 0;
+            const percent = Math.round((reportedCount / totalVillages) * 100);
             document.getElementById('dashProgressPercent').textContent = `${percent}%`;
             document.getElementById('dashProgressBar').style.width = `${percent}%`;
 
@@ -1344,26 +1440,32 @@ function doPost(e) {
 
             huaiRachData.forEach(tObj => {
                 const tTambon = tObj.tambon;
+                const reportedInTambon = submittedReports.filter(r => r.tambon === tTambon).length;
                 const totalInTambon = tObj.villages.length;
-                const reportedInTambon = submittedReports.filter(r => r.tambon === tTambon);
-                const countReported = reportedInTambon.length;
 
                 const item = document.createElement('div');
-                item.className = 'border border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm';
+                item.className = 'border border-slate-200 rounded-2xl overflow-hidden shadow-sm bg-slate-50';
 
                 item.innerHTML = `
-                    <div class="bg-slate-50 hover:bg-blue-50/50 px-4 py-3 flex items-center justify-between cursor-pointer transition-all" onclick="toggleAccordion('acc_${tTambon}')">
+                    <div onclick="toggleAccordion('acc_${tTambon}')" class="p-4 sm:p-5 flex items-center justify-between cursor-pointer hover:bg-slate-100 transition-all select-none">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-map-location-dot text-blue-600"></i>
-                            <span class="font-bold text-slate-800 text-sm sm:text-base font-prompt">ตำบล${tTambon}</span>
-                            <span class="text-xs px-2.5 py-0.5 rounded-full font-bold ${countReported === totalInTambon ? 'bg-emerald-100 text-emerald-800 border border-emerald-200' : 'bg-slate-200 text-slate-700'}">
-                                ${countReported} / ${totalInTambon} หมู่บ้าน
-                            </span>
+                            <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">
+                                ${reportedInTambon}/${totalInTambon}
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm sm:text-base font-prompt">ตำบล${tTambon}</h4>
+                                <p class="text-xs text-slate-500">รายงานแล้ว ${reportedInTambon} จาก ${totalInTambon} หมู่บ้าน</p>
+                            </div>
                         </div>
-                        <i id="icon_acc_${tTambon}" class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform"></i>
+                        <div class="flex items-center gap-3">
+                            <div class="w-24 sm:w-32 bg-slate-200 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-emerald-500 h-2.5 rounded-full" style="width: ${(reportedInTambon/totalInTambon)*100}%"></div>
+                            </div>
+                            <i id="icon_acc_${tTambon}" class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform"></i>
+                        </div>
                     </div>
 
-                    <div id="acc_${tTambon}" class="p-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 bg-white">
+                    <div id="acc_${tTambon}" class="hidden p-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 bg-white border-t border-slate-200">
                         ${tObj.villages.map(v => {
                             const isDone = submittedReports.some(r => r.tambon === tTambon && r.moo === v.moo);
                             return `
@@ -1614,7 +1716,7 @@ function doPost(e) {
                 return;
             }
 
-            let csvContent = "\uFEFF"; // UTF-8 BOM
+            let csvContent = "\uFEFF";
             csvContent += "ตำบล,หมู่ที่,ชื่อหมู่บ้าน,จำนวน อช.,คน1_ชื่อ,คน1_เลขบัตร,คน1_โทร,คน2_ชื่อ,คน2_เลขบัตร,คน2_โทร,คน3_ชื่อ,คน3_เลขบัตร,คน3_โทร,คน4_ชื่อ,คน4_เลขบัตร,คน4_โทร\n";
 
             submittedReports.forEach(r => {
